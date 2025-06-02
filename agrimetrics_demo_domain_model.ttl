@@ -1,0 +1,506 @@
+# Prefixes
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix demo: <urn:agrimetrics:demo:ontology:> .
+
+# Classes
+
+demo:Action rdf:type owl:Class .
+demo:Action rdfs:label "Action"@en .
+demo:Action rdfs:comment "A measure is an action taken to help achieve an environmental objective in the river basin management plan. Measures are usually delivered through programmes of work such as the government’s Rural Development Programme, the Water Industry National Environment Programme, the Environment Agency’s Environment Programme or catchment partnerships."@en .
+
+demo:ActionCategory rdf:type owl:Class .
+demo:ActionCategory rdfs:label "ActionCategory"@en .
+
+demo:Agent rdf:type owl:Class .
+demo:Agent rdfs:label "Agent"@en .
+
+demo:AgentType rdf:type owl:Class .
+demo:AgentType rdfs:label "AgentType"@en .
+
+demo:Authority rdf:type owl:Class .
+demo:Authority rdfs:label "Authority"@en .
+
+demo:Determinand rdf:type owl:Class .
+demo:Determinand rdfs:label "Determinand"@en .
+
+demo:Driver rdf:type owl:Class .
+demo:Driver rdfs:label "Driver"@en .
+
+demo:EffluentType rdf:type owl:Class .
+demo:EffluentType rdfs:label "EffluentType"@en .
+
+demo:Industry rdf:type owl:Class .
+demo:Industry rdfs:label "Industry"@en .
+
+demo:Location rdf:type owl:Class .
+demo:Location rdfs:label "Location"@en .
+
+demo:Measure rdf:type owl:Class .
+demo:Measure rdfs:label "Measure"@en .
+
+demo:Measurement rdf:type owl:Class .
+demo:Measurement rdfs:label "Measurement"@en .
+
+demo:Permit rdf:type owl:Class .
+demo:Permit rdfs:label "Permit"@en .
+
+demo:Purpose rdf:type owl:Class .
+demo:Purpose rdfs:label "Purpose"@en .
+
+demo:Reading rdf:type owl:Class .
+demo:Reading rdfs:label "Reading"@en .
+
+demo:Sample rdf:type owl:Class .
+demo:Sample rdfs:label "Sample"@en .
+
+demo:SampledMaterialType rdf:type owl:Class .
+demo:SampledMaterialType rdfs:label "SampledMaterialType"@en .
+
+demo:SamplingPoint rdf:type owl:Class .
+demo:SamplingPoint rdfs:label "SamplingPoint"@en .
+
+demo:SiteType rdf:type owl:Class .
+demo:SiteType rdfs:label "SiteType"@en .
+
+demo:Unit rdf:type owl:Class .
+demo:Unit rdfs:label "Unit"@en .
+
+demo:ValueType rdf:type owl:Class .
+demo:ValueType rdfs:label "ValueType"@en .
+
+demo:EAarea rdf:type owl:Class .
+demo:EAarea rdfs:subClassOf demo:Location .
+demo:EAarea rdfs:label "EAarea"@en .
+
+demo:ManagementCatchment rdf:type owl:Class .
+demo:ManagementCatchment rdfs:subClassOf demo:Location .
+demo:ManagementCatchment rdfs:label "ManagementCatchment"@en .
+
+demo:OperationalCatchment rdf:type owl:Class .
+demo:OperationalCatchment rdfs:subClassOf demo:Location .
+demo:OperationalCatchment rdfs:label "OperationalCatchment"@en .
+
+demo:RiverBasinDistrict rdf:type owl:Class .
+demo:RiverBasinDistrict rdfs:subClassOf demo:Location .
+demo:RiverBasinDistrict rdfs:label "RiverBasinDistrict"@en .
+
+demo:Site rdf:type owl:Class .
+demo:Site rdfs:subClassOf demo:Location .
+demo:Site rdfs:label "Site"@en .
+
+demo:Station rdf:type owl:Class .
+demo:Station rdfs:subClassOf demo:Location .
+demo:Station rdfs:label "Station"@en .
+
+demo:WaterBody rdf:type owl:Class .
+demo:WaterBody rdfs:subClassOf demo:Location .
+demo:WaterBody rdfs:label "WaterBody"@en .
+
+
+# Object Properties
+
+demo:actionCategory rdf:type owl:ObjectProperty .
+demo:actionCategory rdfs:domain demo:Action .
+demo:actionCategory rdfs:range demo:ActionCategory .
+demo:actionCategory rdfs:label "actionCategory"@en .
+
+demo:agentType rdf:type owl:ObjectProperty .
+demo:agentType rdfs:domain demo:Agent .
+demo:agentType rdfs:range demo:AgentType .
+demo:agentType rdfs:label "agentType"@en .
+
+demo:containedIn rdf:type owl:ObjectProperty .
+demo:containedIn rdfs:domain demo:ManagementCatchment .
+demo:containedIn rdfs:range demo:RiverBasinDistrict .
+demo:containedIn rdfs:label "containedIn"@en .
+
+demo:containedIn rdf:type owl:ObjectProperty .
+demo:containedIn rdfs:domain demo:OperationalCatchment .
+demo:containedIn rdfs:range demo:ManagementCatchment .
+demo:containedIn rdfs:label "containedIn"@en .
+
+demo:continedIn rdf:type owl:ObjectProperty .
+demo:continedIn rdfs:domain demo:WaterBody .
+demo:continedIn rdfs:range demo:OperationalCatchment .
+demo:continedIn rdfs:label "continedIn"@en .
+
+demo:cotainedIn rdf:type owl:ObjectProperty .
+demo:cotainedIn rdfs:domain demo:RiverBasinDistrict .
+demo:cotainedIn rdfs:range demo:EAarea .
+demo:cotainedIn rdfs:label "cotainedIn"@en .
+
+demo:determinand rdf:type owl:ObjectProperty .
+demo:determinand rdfs:domain demo:Measurement .
+demo:determinand rdfs:range demo:Determinand .
+demo:determinand rdfs:label "determinand"@en .
+
+demo:downstreamBody rdf:type owl:ObjectProperty .
+demo:downstreamBody rdfs:domain demo:WaterBody .
+demo:downstreamBody rdfs:range demo:WaterBody .
+demo:downstreamBody rdfs:label "downstreamBody"@en .
+
+demo:driver rdf:type owl:ObjectProperty .
+demo:driver rdfs:domain demo:Action .
+demo:driver rdfs:range demo:Driver .
+demo:driver rdfs:label "driver"@en .
+
+demo:eaArea rdf:type owl:ObjectProperty .
+demo:eaArea rdfs:domain demo:Action .
+demo:eaArea rdfs:range demo:EAarea .
+demo:eaArea rdfs:label "eaArea"@en .
+
+demo:effluentType rdf:type owl:ObjectProperty .
+demo:effluentType rdfs:domain demo:Permit .
+demo:effluentType rdfs:range demo:EffluentType .
+demo:effluentType rdfs:label "effluentType"@en .
+
+demo:fromSample rdf:type owl:ObjectProperty .
+demo:fromSample rdfs:domain demo:Measurement .
+demo:fromSample rdfs:range demo:Sample .
+demo:fromSample rdfs:label "fromSample"@en .
+demo:fromSample owl:inverseOf demo:measurement .
+
+demo:hasAuthority rdf:type owl:ObjectProperty .
+demo:hasAuthority rdfs:domain demo:Unit .
+demo:hasAuthority rdfs:range demo:Authority .
+demo:hasAuthority rdfs:label "hasAuthority"@en .
+demo:hasAuthority rdfs:comment "The authority for our standaridesed units."@en .
+
+demo:hasStaion rdf:type owl:ObjectProperty .
+demo:hasStaion rdfs:domain demo:Measure .
+demo:hasStaion rdfs:range demo:Station .
+demo:hasStaion rdfs:label "hasStaion"@en .
+
+demo:industry rdf:type owl:ObjectProperty .
+demo:industry rdfs:domain demo:Agent .
+demo:industry rdfs:range demo:Industry .
+demo:industry rdfs:label "industry"@en .
+
+demo:measurement rdf:type owl:ObjectProperty .
+demo:measurement rdfs:domain demo:Sample .
+demo:measurement rdfs:range demo:Measurement .
+demo:measurement rdfs:label "measurement"@en .
+
+demo:measuresWaterBody rdf:type owl:ObjectProperty .
+demo:measuresWaterBody rdfs:domain demo:Station .
+demo:measuresWaterBody rdfs:range demo:WaterBody .
+demo:measuresWaterBody rdfs:label "measuresWaterBody"@en .
+
+demo:onWaterBody rdf:type owl:ObjectProperty .
+demo:onWaterBody rdfs:domain demo:Site .
+demo:onWaterBody rdfs:range demo:WaterBody .
+demo:onWaterBody rdfs:label "onWaterBody"@en .
+
+demo:permitForSite rdf:type owl:ObjectProperty .
+demo:permitForSite rdfs:domain demo:Permit .
+demo:permitForSite rdfs:range demo:Site .
+demo:permitForSite rdfs:label "permitForSite"@en .
+
+demo:permitHolder rdf:type owl:ObjectProperty .
+demo:permitHolder rdfs:domain demo:Permit .
+demo:permitHolder rdfs:range demo:Agent .
+demo:permitHolder rdfs:label "permitHolder"@en .
+
+demo:permitObstruction rdf:type owl:ObjectProperty .
+demo:permitObstruction rdfs:domain demo:Action .
+demo:permitObstruction rdfs:range demo:Permit .
+demo:permitObstruction rdfs:label "permitObstruction"@en .
+
+demo:purpose rdf:type owl:ObjectProperty .
+demo:purpose rdfs:domain demo:Sample .
+demo:purpose rdfs:range demo:Purpose .
+demo:purpose rdfs:label "purpose"@en .
+
+demo:reading rdf:type owl:ObjectProperty .
+demo:reading rdfs:domain demo:Measure .
+demo:reading rdfs:range demo:Reading .
+demo:reading rdfs:label "reading"@en .
+
+demo:sampledMaterialType rdf:type owl:ObjectProperty .
+demo:sampledMaterialType rdfs:domain demo:Sample .
+demo:sampledMaterialType rdfs:range demo:SampledMaterialType .
+demo:sampledMaterialType rdfs:label "sampledMaterialType"@en .
+
+demo:samplesWaterBody rdf:type owl:ObjectProperty .
+demo:samplesWaterBody rdfs:domain demo:SamplingPoint .
+demo:samplesWaterBody rdfs:range demo:WaterBody .
+demo:samplesWaterBody rdfs:label "samplesWaterBody"@en .
+
+demo:samplingPoint rdf:type owl:ObjectProperty .
+demo:samplingPoint rdfs:domain demo:Sample .
+demo:samplingPoint rdfs:range demo:SamplingPoint .
+demo:samplingPoint rdfs:label "samplingPoint"@en .
+
+demo:siteType rdf:type owl:ObjectProperty .
+demo:siteType rdfs:domain demo:Site .
+demo:siteType rdfs:range demo:SiteType .
+demo:siteType rdfs:label "siteType"@en .
+
+demo:unit rdf:type owl:ObjectProperty .
+demo:unit rdfs:domain demo:Determinand .
+demo:unit rdfs:range demo:Unit .
+demo:unit rdfs:label "unit"@en .
+
+demo:unit rdf:type owl:ObjectProperty .
+demo:unit rdfs:domain demo:Measure .
+demo:unit rdfs:range demo:Unit .
+demo:unit rdfs:label "unit"@en .
+
+demo:upstreamBody rdf:type owl:ObjectProperty .
+demo:upstreamBody rdfs:domain demo:WaterBody .
+demo:upstreamBody rdfs:range demo:WaterBody .
+demo:upstreamBody rdfs:label "upstreamBody"@en .
+
+demo:valueTye rdf:type owl:ObjectProperty .
+demo:valueTye rdfs:domain demo:Measure .
+demo:valueTye rdfs:range demo:ValueType .
+demo:valueTye rdfs:label "valueTye"@en .
+
+demo:waterBody rdf:type owl:ObjectProperty .
+demo:waterBody rdfs:domain demo:Action .
+demo:waterBody rdfs:range demo:WaterBody .
+demo:waterBody rdfs:label "waterBody"@en .
+
+demo:waterCompany rdf:type owl:ObjectProperty .
+demo:waterCompany rdfs:domain demo:Action .
+demo:waterCompany rdfs:range demo:Agent .
+demo:waterCompany rdfs:label "waterCompany"@en .
+
+
+# Datatype Properties
+
+demo:address rdf:type owl:DatatypeProperty .
+demo:address rdfs:domain demo:Site .
+demo:address rdfs:range xsd:string .
+demo:address rdfs:label "address"@en .
+
+demo:boundaryName rdf:type owl:DatatypeProperty .
+demo:boundaryName rdfs:domain demo:Action .
+demo:boundaryName rdfs:range xsd:string .
+demo:boundaryName rdfs:label "boundaryName"@en .
+
+demo:completetionDate rdf:type owl:DatatypeProperty .
+demo:completetionDate rdfs:domain demo:Action .
+demo:completetionDate rdfs:range xsd:date .
+demo:completetionDate rdfs:label "completetionDate"@en .
+
+demo:dateOfCapture rdf:type owl:DatatypeProperty .
+demo:dateOfCapture rdfs:domain demo:Measurement .
+demo:dateOfCapture rdfs:range xsd:dateTime .
+demo:dateOfCapture rdfs:label "dateOfCapture"@en .
+demo:dateOfCapture rdfs:comment "The time of capture "@en .
+
+demo:description rdf:type owl:DatatypeProperty .
+demo:description rdfs:domain demo:Action .
+demo:description rdfs:range xsd:string .
+demo:description rdfs:label "description"@en .
+
+demo:driverRegulatoryExplanation rdf:type owl:DatatypeProperty .
+demo:driverRegulatoryExplanation rdfs:domain demo:Driver .
+demo:driverRegulatoryExplanation rdfs:range xsd:string .
+demo:driverRegulatoryExplanation rdfs:label "driverRegulatoryExplanation"@en .
+
+demo:hasCompleteness rdf:type owl:DatatypeProperty .
+demo:hasCompleteness rdfs:domain demo:Reading .
+demo:hasCompleteness rdfs:range xsd:string .
+demo:hasCompleteness rdfs:label "hasCompleteness"@en .
+
+demo:hasQuality rdf:type owl:DatatypeProperty .
+demo:hasQuality rdfs:domain demo:Reading .
+demo:hasQuality rdfs:range xsd:string .
+demo:hasQuality rdfs:label "hasQuality"@en .
+
+demo:hasValue rdf:type owl:DatatypeProperty .
+demo:hasValue rdfs:domain demo:Reading .
+demo:hasValue rdfs:range xsd:decimal .
+demo:hasValue rdfs:label "hasValue"@en .
+
+demo:isComplianceSample rdf:type owl:DatatypeProperty .
+demo:isComplianceSample rdfs:domain demo:Sample .
+demo:isComplianceSample rdfs:range xsd:boolean .
+demo:isComplianceSample rdfs:label "isComplianceSample"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:Action .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:ActionCategory .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:Agent .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:AgentType .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:Authority .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:Determinand .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:Driver .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:EffluentType .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:Industry .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:Location .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:Measure .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:Measurement .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:Permit .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:Purpose .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:Reading .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:Sample .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:SampledMaterialType .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:SamplingPoint .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:SiteType .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:Unit .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:label rdf:type owl:DatatypeProperty .
+demo:label rdfs:domain demo:ValueType .
+demo:label rdfs:range xsd:string .
+demo:label rdfs:label "label"@en .
+
+demo:lat rdf:type owl:DatatypeProperty .
+demo:lat rdfs:domain demo:Location .
+demo:lat rdfs:range xsd:float .
+demo:lat rdfs:label "lat"@en .
+
+demo:lat rdf:type owl:DatatypeProperty .
+demo:lat rdfs:domain demo:SamplingPoint .
+demo:lat rdfs:range xsd:float .
+demo:lat rdfs:label "lat"@en .
+
+demo:localAuthority rdf:type owl:DatatypeProperty .
+demo:localAuthority rdfs:domain demo:Site .
+demo:localAuthority rdfs:range xsd:string .
+demo:localAuthority rdfs:label "localAuthority"@en .
+
+demo:long rdf:type owl:DatatypeProperty .
+demo:long rdfs:domain demo:Location .
+demo:long rdfs:range xsd:float .
+demo:long rdfs:label "long"@en .
+
+demo:long rdf:type owl:DatatypeProperty .
+demo:long rdfs:domain demo:SamplingPoint .
+demo:long rdfs:range xsd:float .
+demo:long rdfs:label "long"@en .
+
+demo:longDescription rdf:type owl:DatatypeProperty .
+demo:longDescription rdfs:domain demo:Determinand .
+demo:longDescription rdfs:range xsd:string .
+demo:longDescription rdfs:label "longDescription"@en .
+
+demo:permitBodyText rdf:type owl:DatatypeProperty .
+demo:permitBodyText rdfs:domain demo:Permit .
+demo:permitBodyText rdfs:range xsd:string .
+demo:permitBodyText rdfs:label "permitBodyText"@en .
+
+demo:permitHolderName rdf:type owl:DatatypeProperty .
+demo:permitHolderName rdfs:domain demo:Permit .
+demo:permitHolderName rdfs:range xsd:string .
+demo:permitHolderName rdfs:label "permitHolderName"@en .
+
+demo:permitNumber rdf:type owl:DatatypeProperty .
+demo:permitNumber rdfs:domain demo:Permit .
+demo:permitNumber rdfs:range xsd:string .
+demo:permitNumber rdfs:label "permitNumber"@en .
+
+demo:postcode rdf:type owl:DatatypeProperty .
+demo:postcode rdfs:domain demo:Site .
+demo:postcode rdfs:range xsd:string .
+demo:postcode rdfs:label "postcode"@en .
+
+demo:readingDate rdf:type owl:DatatypeProperty .
+demo:readingDate rdfs:domain demo:Reading .
+demo:readingDate rdfs:range xsd:date .
+demo:readingDate rdfs:label "readingDate"@en .
+
+demo:result rdf:type owl:DatatypeProperty .
+demo:result rdfs:domain demo:Measurement .
+demo:result rdfs:range xsd:decimal .
+demo:result rdfs:label "result"@en .
+
+demo:revoctionDate rdf:type owl:DatatypeProperty .
+demo:revoctionDate rdfs:domain demo:Permit .
+demo:revoctionDate rdfs:range xsd:date .
+demo:revoctionDate rdfs:label "revoctionDate"@en .
+
+demo:sampleDateTime rdf:type owl:DatatypeProperty .
+demo:sampleDateTime rdfs:domain demo:Sample .
+demo:sampleDateTime rdfs:range xsd:dateTime .
+demo:sampleDateTime rdfs:label "sampleDateTime"@en .
+
+demo:startDate rdf:type owl:DatatypeProperty .
+demo:startDate rdfs:domain demo:Permit .
+demo:startDate rdfs:range xsd:date .
+demo:startDate rdfs:label "startDate"@en .
+
