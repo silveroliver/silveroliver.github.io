@@ -49,11 +49,6 @@ environment-agency:containedIn rdfs:domain environment-agency:Waterbody .
 environment-agency:containedIn rdfs:range environment-agency:OperationalCatchment .
 environment-agency:containedIn rdfs:label "containedIn"@en .
 
-environment-agency:continedin rdf:type owl:ObjectProperty .
-environment-agency:continedin rdfs:domain environment-agency:RiverBasinDistrict .
-environment-agency:continedin rdfs:range environment-agency:EAarea .
-environment-agency:continedin rdfs:label "continedin"@en .
-
 environment-agency:waterBodyType rdf:type owl:ObjectProperty .
 environment-agency:waterBodyType rdfs:domain environment-agency:Waterbody .
 environment-agency:waterBodyType rdfs:range environment-agency:WaterBodyType .
