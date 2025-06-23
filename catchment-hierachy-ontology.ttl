@@ -11,8 +11,8 @@ environment-agency:catchment-hierachy-ontology
     rdf:type owl:Ontology ;
     dcterms:title "Catchment hierachy ontology"@en ;
     dcterms:created "2025-06-25"^^xsd:date ;
-	dcterms:rights "Open Government Licence"@en ;
-    dcterms:description "A model describing a hierachy of operational catchment locations or areas that are used by the Environment Agency to orgnise data and activties."@en ;
+    dcterms:rights "Open Government Licence"@en ;
+    dcterms:description "A model describing a hierachy of operational catchment locations or areas that are used by the Environment Agency to organise data and activties."@en .
 
 # Classes
 
