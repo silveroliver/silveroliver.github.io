@@ -1,0 +1,64 @@
+# Prefixes
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix environment-agency: <http://environment.data.gov.uk/ontology:> .
+
+# Classes
+
+
+environment-agency:Concept rdf:type owl:Class .
+environment-agency:Concept rdfs:label "Concept"@en .
+
+environment-agency:ConceptScheme rdf:type owl:Class .
+environment-agency:ConceptScheme rdfs:label "ConceptScheme"@en .
+
+
+# Object Properties
+
+
+environment-agency:broader rdf:type owl:ObjectProperty .
+environment-agency:broader rdfs:domain environment-agency:Concept .
+environment-agency:broader rdfs:range environment-agency:Concept .
+environment-agency:broader rdfs:label "broader"@en .
+
+
+environment-agency:inScheme rdf:type owl:ObjectProperty .
+environment-agency:inScheme rdfs:domain environment-agency:Concept .
+environment-agency:inScheme rdfs:range environment-agency:ConceptScheme .
+environment-agency:inScheme rdfs:label "inScheme"@en .
+
+# Datatype Properties
+
+environment-agency:altLabel rdf:type owl:DatatypeProperty .
+environment-agency:altLabel rdfs:domain environment-agency:Concept .
+environment-agency:altLabel rdfs:range xsd:string .
+environment-agency:altLabel rdfs:label "altLabel"@en .
+
+environment-agency:code rdf:type owl:DatatypeProperty .
+environment-agency:code rdfs:domain environment-agency:Concept .
+environment-agency:code rdfs:range xsd:string .
+environment-agency:code rdfs:label "code"@en .
+
+environment-agency:definition rdf:type owl:DatatypeProperty .
+environment-agency:definition rdfs:domain environment-agency:ConceptScheme .
+environment-agency:definition rdfs:range xsd:string .
+environment-agency:definition rdfs:label "definition"@en .
+
+environment-agency:description rdf:type owl:DatatypeProperty .
+environment-agency:description rdfs:domain environment-agency:Concept .
+environment-agency:description rdfs:range xsd:string .
+environment-agency:description rdfs:label "description"@en .
+
+environment-agency:label rdf:type owl:DatatypeProperty .
+environment-agency:label rdfs:domain environment-agency:Concept .
+environment-agency:label rdfs:range xsd:string .
+environment-agency:label rdfs:label "label"@en .
+
+environment-agency:label rdf:type owl:DatatypeProperty .
+environment-agency:label rdfs:domain environment-agency:ConceptScheme .
+environment-agency:label rdfs:range xsd:string .
+environment-agency:label rdfs:label "label"@en .
+

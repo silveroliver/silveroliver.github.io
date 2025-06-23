@@ -1,0 +1,92 @@
+# Prefixes
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix environment-agency: <http://environment.data.gov.uk/ontology:> .
+
+# Classes
+
+environment-agency:Action rdf:type owl:Class .
+environment-agency:Action rdfs:label "Action"@en .
+
+environment-agency:Party rdf:type owl:Class .
+environment-agency:Party rdfs:label "Party"@en .
+
+environment-agency:SiteType rdf:type owl:Class .
+environment-agency:SiteType rdfs:label "SiteType"@en .
+
+environment-agency:Waterbody rdf:type owl:Class .
+environment-agency:Waterbody rdfs:label "Water body"@en .
+environment-agency:Waterbody rdfs:comment "A discrete and significant element of surface water such as a lake or reservoir or entire (or part) stream, river or canal, estuary or stretch of coastal water"@en .
+
+environment-agency:WaterBodyType rdf:type owl:Class .
+environment-agency:WaterBodyType rdfs:label "WaterBodyType"@en .
+
+environment-agency:Driver rdf:type owl:Class .
+environment-agency:Driver rdfs:subClassOf environment-agency:Concept .
+environment-agency:Driver rdfs:label "Driver"@en .
+
+environment-agency:Site rdf:type owl:Class .
+environment-agency:Site rdfs:subClassOf environment-agency:Place .
+environment-agency:Site rdfs:label "Site"@en .
+
+
+# Object Properties
+
+environment-agency:action rdf:type owl:ObjectProperty .
+environment-agency:action rdfs:domain environment-agency:Driver .
+environment-agency:action rdfs:range environment-agency:Concept .
+environment-agency:action rdfs:label "action"@en .
+
+environment-agency:driver rdf:type owl:ObjectProperty .
+environment-agency:driver rdfs:domain environment-agency:Action .
+environment-agency:driver rdfs:range environment-agency:Driver .
+environment-agency:driver rdfs:label "driver"@en .
+
+environment-agency:siteType rdf:type owl:ObjectProperty .
+environment-agency:siteType rdfs:domain environment-agency:Site .
+environment-agency:siteType rdfs:range environment-agency:SiteType .
+environment-agency:siteType rdfs:label "siteType"@en .
+
+environment-agency:waterCompany rdf:type owl:ObjectProperty .
+environment-agency:waterCompany rdfs:domain environment-agency:Action .
+environment-agency:waterCompany rdfs:range environment-agency:Party .
+environment-agency:waterCompany rdfs:label "waterCompany"@en .
+
+
+# Datatype Properties
+
+
+environment-agency:completetionDate rdf:type owl:DatatypeProperty .
+environment-agency:completetionDate rdfs:domain environment-agency:Action .
+environment-agency:completetionDate rdfs:range xsd:date .
+environment-agency:completetionDate rdfs:label "completetionDate"@en .
+
+environment-agency:description rdf:type owl:DatatypeProperty .
+environment-agency:description rdfs:domain environment-agency:Action .
+environment-agency:description rdfs:range xsd:string .
+environment-agency:description rdfs:label "description"@en .
+
+environment-agency:label rdf:type owl:DatatypeProperty .
+environment-agency:label rdfs:domain environment-agency:Action .
+environment-agency:label rdfs:range xsd:string .
+environment-agency:label rdfs:label "label"@en .
+
+environment-agency:label rdf:type owl:DatatypeProperty .
+environment-agency:label rdfs:domain environment-agency:SiteType .
+environment-agency:label rdfs:range xsd:string .
+environment-agency:label rdfs:label "label"@en .
+
+environment-agency:localAuthority rdf:type owl:DatatypeProperty .
+environment-agency:localAuthority rdfs:domain environment-agency:Site .
+environment-agency:localAuthority rdfs:range xsd:string .
+environment-agency:localAuthority rdfs:label "localAuthority"@en .
+
+environment-agency:postcode rdf:type owl:DatatypeProperty .
+environment-agency:postcode rdfs:domain environment-agency:Site .
+environment-agency:postcode rdfs:range xsd:string .
+environment-agency:postcode rdfs:label "postcode"@en .
+
+

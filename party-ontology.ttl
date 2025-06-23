@@ -1,0 +1,91 @@
+# Prefixes
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix environment-agency: <http://environment.data.gov.uk/ontology:> .
+
+# Classes
+
+environment-agency:Party rdf:type owl:Class .
+environment-agency:Party rdfs:label "Party"@en .
+environment-agency:Party rdfs:comment "An individual or group who can act as agents. For example hold permits or commit to actions."@en .
+
+environment-agency:Organisation rdf:type owl:Class .
+environment-agency:Organisation rdfs:label "Organisation"@en .
+environment-agency:Organisation rdfs:subClassof environment-agency:Party.
+environment-agency:Organisation rdfs:comment "Represents a collection of people organized together into a community or other social, commercial or political structure. The group has some common purpose or reason for existence which goes beyond the set of people belonging to it and can act as an Agent. Organizations are often decomposable into hierarchical structures."@en .
+
+
+environment-agency:IndustryClassification rdf:type owl:Class .
+environment-agency:IndustryClassification rdfs:label "IndustryClassification"@en .
+environment-agency:IndustryClassification rdfs:comment "A SIC code, or Standard Industrial Classification code, is a 5-digit number that classifies businesses by their economic activity. It's used to categorize companies for data collection, statistical analysis, and other government purposes. "@en .
+
+
+
+
+# Object Properties
+
+
+environment-agency:industryClassficaion rdf:type owl:ObjectProperty .
+environment-agency:industryClassficaion rdfs:domain environment-agency:Organisation .
+environment-agency:industryClassficaion rdfs:range environment-agency:IndustryClassification .
+environment-agency:industryClassficaion rdfs:label "industryClassficaion"@en .
+
+
+environment-agency:hasUnit rdf:type owl:ObjectProperty .
+environment-agency:hasUnit rdfs:domain environment-agency:Organisation .
+environment-agency:hasUnit rdfs:range environment-agency:Organisation .
+environment-agency:hasUnit rdfs:label "hasUnit"@en .
+environment-agency:IndustryClassification rdfs:comment "Indicates a unit which is part of this Organization, e.g. a Department within a larger Organization."@en .
+
+
+
+
+
+# Datatype Properties
+
+
+environment-agency:companiesHouse rdf:type owl:DatatypeProperty .
+environment-agency:companiesHouse rdfs:domain environment-agency:Organisation .
+environment-agency:companiesHouse rdfs:range xsd:string .
+environment-agency:companiesHouse rdfs:label "companiesHouse"@en .
+
+environment-agency:contactPoint rdf:type owl:DatatypeProperty .
+environment-agency:contactPoint rdfs:domain environment-agency:Party .
+environment-agency:contactPoint rdfs:range xsd:string .
+environment-agency:contactPoint rdfs:label "contactPoint"@en .
+
+environment-agency:description rdf:type owl:DatatypeProperty .
+environment-agency:description rdfs:domain environment-agency:IndustryClassification .
+environment-agency:description rdfs:range xsd:string .
+environment-agency:description rdfs:label "description"@en .
+
+environment-agency:label rdf:type owl:DatatypeProperty .
+environment-agency:label rdfs:domain environment-agency:IndustryClassification .
+environment-agency:label rdfs:range xsd:string .
+environment-agency:label rdfs:label "label"@en .
+
+environment-agency:label rdf:type owl:DatatypeProperty .
+environment-agency:label rdfs:domain environment-agency:Party .
+environment-agency:label rdfs:range xsd:string .
+environment-agency:label rdfs:label "label"@en .
+
+environment-agency:logo rdf:type owl:DatatypeProperty .
+environment-agency:logo rdfs:domain environment-agency:Party .
+environment-agency:logo rdfs:range xsd:string .
+environment-agency:logo rdfs:label "logo"@en .
+
+environment-agency:openCorporatesID rdf:type owl:DatatypeProperty .
+environment-agency:openCorporatesID rdfs:domain environment-agency:Organisation .
+environment-agency:openCorporatesID rdfs:range xsd:string .
+environment-agency:openCorporatesID rdfs:label "openCorporatesID"@en .
+
+
+
+environment-agency:website rdf:type owl:DatatypeProperty .
+environment-agency:website rdfs:domain environment-agency:Party .
+environment-agency:website rdfs:range xsd:string .
+environment-agency:website rdfs:label "website"@en .
+

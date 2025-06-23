@@ -1,0 +1,148 @@
+# Prefixes
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix environment-agency: <http://environment.data.gov.uk/ontology:> .
+
+# Classes
+
+environment-agency:Determinand rdf:type owl:Class .
+environment-agency:Determinand rdfs:label "Determinand"@en .
+
+environment-agency:Measurement rdf:type owl:Class .
+environment-agency:Measurement rdfs:label "Measurement"@en .
+
+environment-agency:MonitoringPoint rdf:type owl:Class .
+environment-agency:MonitoringPoint rdfs:label "MonitoringPoint"@en .
+environment-agency:MonitoringPoint rdfs:comment "A location where we collect time series data."@en .
+
+environment-agency:Purpose rdf:type owl:Class .
+environment-agency:Purpose rdfs:label "Purpose"@en .
+
+environment-agency:Sample rdf:type owl:Class .
+environment-agency:Sample rdfs:label "Sample"@en .
+
+environment-agency:SampledMaterialType rdf:type owl:Class .
+environment-agency:SampledMaterialType rdfs:label "SampledMaterialType"@en .
+
+environment-agency:Unit rdf:type owl:Class .
+environment-agency:Unit rdfs:label "Unit"@en .
+
+# Object Properties
+
+
+environment-agency:determinand rdf:type owl:ObjectProperty .
+environment-agency:determinand rdfs:domain environment-agency:Measurement .
+environment-agency:determinand rdfs:range environment-agency:Determinand .
+environment-agency:determinand rdfs:label "determinand"@en .
+
+
+environment-agency:fromSample rdf:type owl:ObjectProperty .
+environment-agency:fromSample rdfs:domain environment-agency:Measurement .
+environment-agency:fromSample rdfs:range environment-agency:Sample .
+environment-agency:fromSample rdfs:label "fromSample"@en .
+
+environment-agency:hasUnit rdf:type owl:ObjectProperty .
+environment-agency:hasUnit rdfs:domain environment-agency:Party .
+environment-agency:hasUnit rdfs:range environment-agency:Party .
+environment-agency:hasUnit rdfs:label "hasUnit"@en .
+
+environment-agency:locatedIn rdf:type owl:ObjectProperty .
+environment-agency:locatedIn rdfs:domain environment-agency:MonitoringPoint .
+environment-agency:locatedIn rdfs:range environment-agency:Waterbody .
+environment-agency:locatedIn rdfs:label "locatedIn"@en .
+
+environment-agency:measurement rdf:type owl:ObjectProperty .
+environment-agency:measurement rdfs:domain environment-agency:Sample .
+environment-agency:measurement rdfs:range environment-agency:Measurement .
+environment-agency:measurement rdfs:label "measurement"@en .
+environment-agency:measurement owl:inverseOf environment-agency:fromSample .
+
+environment-agency:purpose rdf:type owl:ObjectProperty .
+environment-agency:purpose rdfs:domain environment-agency:Sample .
+environment-agency:purpose rdfs:range environment-agency:Purpose .
+environment-agency:purpose rdfs:label "purpose"@en .
+
+environment-agency:sampledMatrialType rdf:type owl:ObjectProperty .
+environment-agency:sampledMatrialType rdfs:domain environment-agency:Sample .
+environment-agency:sampledMatrialType rdfs:range environment-agency:SampledMaterialType .
+environment-agency:sampledMatrialType rdfs:label "sampledMatrialType"@en .
+
+environment-agency:samplingPoint rdf:type owl:ObjectProperty .
+environment-agency:samplingPoint rdfs:domain environment-agency:Sample .
+environment-agency:samplingPoint rdfs:range environment-agency:MonitoringPoint .
+environment-agency:samplingPoint rdfs:label "samplingPoint"@en .
+
+environment-agency:unit rdf:type owl:ObjectProperty .
+environment-agency:unit rdfs:domain environment-agency:Determinand .
+environment-agency:unit rdfs:range environment-agency:Unit .
+environment-agency:unit rdfs:label "unit"@en .
+
+# Datatype Properties
+
+
+environment-agency:dateOfCapture rdf:type owl:DatatypeProperty .
+environment-agency:dateOfCapture rdfs:domain environment-agency:Measurement .
+environment-agency:dateOfCapture rdfs:range xsd:dateTime .
+environment-agency:dateOfCapture rdfs:label "dateOfCapture"@en .
+
+
+environment-agency:label rdf:type owl:DatatypeProperty .
+environment-agency:label rdfs:domain environment-agency:Determinand .
+environment-agency:label rdfs:range xsd:string .
+environment-agency:label rdfs:label "label"@en .
+
+
+environment-agency:label rdf:type owl:DatatypeProperty .
+environment-agency:label rdfs:domain environment-agency:Measurement .
+environment-agency:label rdfs:range xsd:string .
+environment-agency:label rdfs:label "label"@en .
+
+environment-agency:label rdf:type owl:DatatypeProperty .
+environment-agency:label rdfs:domain environment-agency:MonitoringPoint .
+environment-agency:label rdfs:range xsd:string .
+environment-agency:label rdfs:label "label"@en .
+
+environment-agency:label rdf:type owl:DatatypeProperty .
+environment-agency:label rdfs:domain environment-agency:Purpose .
+environment-agency:label rdfs:range xsd:string .
+environment-agency:label rdfs:label "label"@en .
+
+environment-agency:label rdf:type owl:DatatypeProperty .
+environment-agency:label rdfs:domain environment-agency:Sample .
+environment-agency:label rdfs:range xsd:string .
+environment-agency:label rdfs:label "label"@en .
+
+environment-agency:label rdf:type owl:DatatypeProperty .
+environment-agency:label rdfs:domain environment-agency:SampledMaterialType .
+environment-agency:label rdfs:range xsd:string .
+environment-agency:label rdfs:label "label"@en .
+
+environment-agency:label rdf:type owl:DatatypeProperty .
+environment-agency:label rdfs:domain environment-agency:Unit .
+environment-agency:label rdfs:range xsd:string .
+environment-agency:label rdfs:label "label"@en .
+
+
+environment-agency:latitude rdf:type owl:DatatypeProperty .
+environment-agency:latitude rdfs:domain environment-agency:MonitoringPoint .
+environment-agency:latitude rdfs:range xsd:float .
+environment-agency:latitude rdfs:label "latitude"@en .
+
+environment-agency:longitude rdf:type owl:DatatypeProperty .
+environment-agency:longitude rdfs:domain environment-agency:MonitoringPoint .
+environment-agency:longitude rdfs:range xsd:float .
+environment-agency:longitude rdfs:label "longitude"@en .
+
+environment-agency:result rdf:type owl:DatatypeProperty .
+environment-agency:result rdfs:domain environment-agency:Measurement .
+environment-agency:result rdfs:range xsd:decimal .
+environment-agency:result rdfs:label "result"@en .
+
+environment-agency:sampleDateTime rdf:type owl:DatatypeProperty .
+environment-agency:sampleDateTime rdfs:domain environment-agency:Sample .
+environment-agency:sampleDateTime rdfs:range xsd:dateTime .
+environment-agency:sampleDateTime rdfs:label "sampleDateTime"@en .
+
