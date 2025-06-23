@@ -6,6 +6,13 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix environment-agency: <http://environment.data.gov.uk/ontology:> .
 
+environment-agency:
+    rdf:type owl:Ontology ;
+    dcterms:title "Catchment hierachy ontology"@en ;
+    dcterms:created "2025-06-25"^^xsd:date ;
+	dcterms:rights "Open Government Licence"@en ;
+    dcterms:description "A model describing a hierachy of operational catchment locations or areas that are used by the Environment Agency to orgnise data and activties."@en ;
+
 # Classes
 
 environment-agency:OperationalLocation rdf:type owl:Class .
