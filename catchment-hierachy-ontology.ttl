@@ -25,31 +25,31 @@ environment-agency:OperationalLocation rdfs:comment "A geographically bounded re
 environment-agency:EAarea rdf:type owl:Class .
 environment-agency:EAarea rdfs:isDefinedBy environment-agency:catchment-hierachy-ontology .
 environment-agency:EAarea rdfs:label "EA area"@en .
-environment-agency:EAarea rdfs:subClassof environment-agency:OperationalLocation.
+environment-agency:EAarea rdfs:subClassOf environment-agency:OperationalLocation.
 environment-agency:EAarea rdfs:comment "Operational geographical boundaries used by the Environment Agency to deliver its work across England"@en .
 
 environment-agency:ManagementCatchment rdf:type owl:Class .
 environment-agency:ManagementCatchment	rdfs:isDefinedBy environment-agency:catchment-hierachy-ontology .
 environment-agency:ManagementCatchment rdfs:label "Management Catchment"@en .
-environment-agency:ManagementCatchment rdfs:subClassof environment-agency:OperationalLocation.
+environment-agency:ManagementCatchment rdfs:subClassOf environment-agency:OperationalLocation.
 environment-agency:ManagementCatchment rdfs:comment "Large catchments with many, often interconnected, water bodies. They are based on the catchments used for managing the availability of water for abstraction and flood risk management"@en .
 
 environment-agency:OperationalCatchment rdf:type owl:Class .
 environment-agency:OperationalCatchment	rdfs:isDefinedBy environment-agency:catchment-hierachy-ontology .
 environment-agency:OperationalCatchment rdfs:label "Operational Catchment"@en .
-environment-agency:OperationalCatchment rdfs:subClassof environment-agency:OperationalLocation.
+environment-agency:OperationalCatchment rdfs:subClassOf environment-agency:OperationalLocation.
 environment-agency:OperationalCatchment rdfs:comment "Small geographical areas covering a small number of water bodies (typically 1 to 10) based around the same local geography or sharing specific pressures"@en .
 
 environment-agency:RiverBasinDistrict rdf:type owl:Class .
 environment-agency:RiverBasinDistrict	rdfs:isDefinedBy environment-agency:catchment-hierachy-ontology .
 environment-agency:RiverBasinDistrict rdfs:label "River Basin District"@en .
-environment-agency:RiverBasinDistrict rdfs:subClassof environment-agency:OperationalLocation.
+environment-agency:RiverBasinDistrict rdfs:subClassOf environment-agency:OperationalLocation.
 environment-agency:RiverBasinDistrict rdfs:comment "The main unit for management of river basins under the WFD Regulations. A river basin district includes the area of land and sea made up of one or more neighbouring river basins together with their associated groundwater and coastal waters "@en .
 
 environment-agency:Waterbody rdf:type owl:Class .
 environment-agency:Waterbody	rdfs:isDefinedBy environment-agency:catchment-hierachy-ontology .
 environment-agency:Waterbody rdfs:label "Water body"@en .
-environment-agency:Waterbody rdfs:subClassof environment-agency:OperationalLocation.
+environment-agency:Waterbody rdfs:subClassOf environment-agency:OperationalLocation.
 environment-agency:Waterbody rdfs:comment "A discrete and significant element of surface water such as a lake or reservoir or entire (or part) stream, river or canal, estuary or stretch of coastal water"@en .
 
 environment-agency:WaterBodyType rdf:type owl:Class .
