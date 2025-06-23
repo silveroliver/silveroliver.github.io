@@ -20,30 +20,40 @@ environment-agency:location-ontology
 
 environment-agency:Location rdf:type owl:Class .
 environment-agency:Location rdfs:label "Location"@en .
+environment-agency:Location rdfs:isDefinedBy environment-agency:location-ontology .
+
 
 environment-agency:NamedLocation rdf:type owl:Class .
 environment-agency:NamedLocation rdfs:subClassof environment-agency:Location.
 environment-agency:NamedLocation rdfs:label "NamedLocation"@en .
 environment-agency:NamedLocation rdfs:comment "A geographic location with a name. The name should come from a predefined naming convention where posisble."@en .
+environment-agency:NamedLocation rdfs:isDefinedBy environment-agency:location-ontology .
 
 environment-agency:LocationWithOnlyExtent rdf:type owl:Class .
 environment-agency:LocationWithOnlyExtent rdfs:subClassof environment-agency:Location.
 environment-agency:LocationWithOnlyExtent rdfs:label "LocationWithOnlyExtent"@en .
 environment-agency:LocationWithOnlyExtent rdfs:comment "A geographic location that will have some geographic extent but not intentded to be used as a named or addressable. A single discharge or monitoring point for example might given only as a point co-ordinate. "@en .
+environment-agency:LocationWithOnlyExtent rdfs:isDefinedBy environment-agency:location-ontology .
+
 
 environment-agency:OperationalLocation rdf:type owl:Class .
 environment-agency:OperationalLocation rdfs:subClassof environment-agency:Location.
 environment-agency:OperationalLocation rdfs:label "OperationalLocation"@en .
 environment-agency:OperationalLocation rdfs:comment "A geographically bounded region that serves as a functional unit for a specific organization, authority, or stakeholder to conduct operations, exercise jurisdiction, provide services, or manage resources within defined spatial limits."@en .
+environment-agency:OperationalLocation rdfs:isDefinedBy environment-agency:location-ontology .
+
 
 environment-agency:AddressableLocation rdf:type owl:Class .
 environment-agency:AddressableLocation rdfs:subClassof environment-agency:NamedLocation.
 environment-agency:AddressableLocation rdfs:label "AddressableLocation"@en .
 environment-agency:AddressableLocation rdfs:comment "A geographic location that can be assigned an addresss. For example an postal address or equivalent."@en .
+environment-agency:AddressableLocation rdfs:isDefinedBy environment-agency:location-ontology .
+
 
 environment-agency:Party rdf:type owl:Class .
 environment-agency:party rdfs:label "Party"@en .
 environment-agency:Party rdfs:comment "To do"@en .
+environment-agency:Party rdfs:isDefinedBy environment-agency:location-ontology .
 
 # Object Properties
 
@@ -52,23 +62,30 @@ environment-agency:containedIn rdf:type owl:ObjectProperty .
 environment-agency:containedIn rdfs:domain environment-agency:OperationalLocation .
 environment-agency:containedIn rdfs:range environment-agency:OperationalLocation .
 environment-agency:containedIn rdfs:label "containedIn"@en .
+environment-agency:containedIn rdfs:isDefinedBy environment-agency:location-ontology .
+
 
 environment-agency:associatedOperationalLocation rdf:type owl:ObjectProperty .
 environment-agency:associatedOperationalLocation rdfs:domain environment-agency:Location .
 environment-agency:associatedOperationalLocation rdfs:range environment-agency:OperationalLocation .
 environment-agency:associatedOperationalLocation rdfs:label "associatedOperationalLocation"@en .
 environment-agency:associatedOperationalLocation rdfs:comment "Associates in someway a location with an OperationalLocation this allows for the lose but valuble assciation between places and an operational area."@en .
+environment-agency:associatedOperationalLocation rdfs:isDefinedBy environment-agency:location-ontology .
 
 
 environment-agency:siteType rdf:type owl:ObjectProperty .
 environment-agency:siteType rdfs:domain environment-agency:Site .
 environment-agency:siteType rdfs:range environment-agency:SiteType .
 environment-agency:siteType rdfs:label "siteType"@en .
+environment-agency:siteType rdfs:isDefinedBy environment-agency:location-ontology .
 
-environment-agency:siteType rdf:type owl:ObjectProperty .
-environment-agency:siteType rdfs:domain environment-agency:OperationalLocation .
-environment-agency:siteType rdfs:range environment-agency:Party .
-environment-agency:siteType rdfs:label "operationalLocationFor"@en .
+
+environment-agency:operationalLocationFor rdf:type owl:ObjectProperty .
+environment-agency:operationalLocationFor rdfs:domain environment-agency:OperationalLocation .
+environment-agency:operationalLocationFor rdfs:range environment-agency:Party .
+environment-agency:operationalLocationFor rdfs:label "operationalLocationFor"@en .
+environment-agency:operationalLocationFor rdfs:isDefinedBy environment-agency:location-ontology .
+
 
 # Datatype Properties
 
@@ -76,19 +93,27 @@ environment-agency:address rdf:type owl:DatatypeProperty .
 environment-agency:address rdfs:domain environment-agency:AddressableLocation .
 environment-agency:address rdfs:range xsd:string .
 environment-agency:address rdfs:label "address"@en .
+environment-agency:address rdfs:isDefinedBy environment-agency:location-ontology .
+
 
 environment-agency:label rdf:type owl:DatatypeProperty .
 environment-agency:label rdfs:domain environment-agency:NamedLocation .
 environment-agency:label rdfs:range xsd:string .
 environment-agency:label rdfs:label "label"@en .
+environment-agency:label rdfs:isDefinedBy environment-agency:location-ontology .
+
 
 environment-agency:lat rdf:type owl:DatatypeProperty .
 environment-agency:lat rdfs:domain environment-agency:Location .
 environment-agency:lat rdfs:range xsd:float .
 environment-agency:lat rdfs:label "lat"@en .
+environment-agency:lat rdfs:isDefinedBy environment-agency:location-ontology .
+
 
 environment-agency:long rdf:type owl:DatatypeProperty .
 environment-agency:long rdfs:domain environment-agency:Location .
 environment-agency:long rdfs:range xsd:float .
 environment-agency:long rdfs:label "long"@en .
+environment-agency:long rdfs:isDefinedBy environment-agency:location-ontology .
+
 
