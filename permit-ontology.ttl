@@ -4,22 +4,36 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix environment-agency: <http://environment.data.gov.uk/ontology:> .
+
+environment-agency:permit-ontology
+    rdf:type owl:Ontology ;
+    dcterms:title "Permit ontology"@en ;
+    dcterms:created "2025-06-25"^^xsd:date ;
+    dcterms:rights "Open Government Licence"@en ;
+    dcterms:description "A model describing discharge permits authorised by the Environment Agency."@en .
+
 
 # Classes
 
 
-environment-agency:EffluentType rdf:type owl:Class .
-environment-agency:EffluentType rdfs:label "EffluentType"@en .
+environment-agency:Party rdf:type owl:Class .
+environment-agency:Party rdfs:subClassOf environment-agency:Concept.
+environment-agency:Party rdfs:label "Party"@en .
 
-environment-agency:MonitoringPoint rdf:type owl:Class .
-environment-agency:MonitoringPoint rdfs:label "MonitoringPoint"@en .
-environment-agency:MonitoringPoint rdfs:comment "A location where we collect time series data."@en .
+environment-agency:Concept rdf:type owl:Class .
+environment-agency:Concept rdfs:label "Concept"@en .
+
+environment-agency:Location rdf:type owl:Class .
+environment-agency:Location rdfs:label "Location"@en .
+environment-agency:Location rdfs:comment "A location where we collect time series data."@en .
 
 environment-agency:Permit rdf:type owl:Class .
 environment-agency:Permit rdfs:label "Permit"@en .
 
 environment-agency:Purpose rdf:type owl:Class .
+environment-agency:EffluentType rdfs:subClassOf environment-agency:Concept.
 environment-agency:Purpose rdfs:label "Purpose"@en .
 
 environment-agency:Waterbody rdf:type owl:Class .
@@ -28,14 +42,14 @@ environment-agency:Waterbody rdfs:comment "A discrete and significant element of
 
 environment-agency:Waterbody rdf:type owl:Class .
 environment-agency:Waterbody rdfs:label "Site"@en .
-environment-agency:Waterbody rdfs:comment "To do"@en .
+environment-agency:Waterbody rdfs:comment "The addressable location that a permit is authorised to"@en .
 
 
 # Object Properties
 
 environment-agency:dischargePoint rdf:type owl:ObjectProperty .
 environment-agency:dischargePoint rdfs:domain environment-agency:Permit .
-environment-agency:dischargePoint rdfs:range environment-agency:DischargePoint .
+environment-agency:dischargePoint rdfs:range environment-agency:Location .
 environment-agency:dischargePoint rdfs:label "dischargePoint"@en .
 
 
@@ -44,19 +58,14 @@ environment-agency:effluentType rdfs:domain environment-agency:Permit .
 environment-agency:effluentType rdfs:range environment-agency:EffluentType .
 environment-agency:effluentType rdfs:label "effluentType"@en .
 
-environment-agency:locatedIn rdf:type owl:ObjectProperty .
-environment-agency:locatedIn rdfs:domain environment-agency:DischargePoint .
-environment-agency:locatedIn rdfs:range environment-agency:Waterbody .
-environment-agency:locatedIn rdfs:label "locatedIn"@en .
-
-environment-agency:locatedIn rdf:type owl:ObjectProperty .
-environment-agency:locatedIn rdfs:domain environment-agency:MonitoringPoint .
-environment-agency:locatedIn rdfs:range environment-agency:Waterbody .
-environment-agency:locatedIn rdfs:label "locatedIn"@en .
+environment-agency:associatedOperationalLocation rdf:type owl:ObjectProperty .
+environment-agency:associatedOperationalLocation rdfs:domain environment-agency:Location .
+environment-agency:associatedOperationalLocation rdfs:range environment-agency:Waterbody .
+environment-agency:associatedOperationalLocation rdfs:label "associatedOperationalLocation"@en .
 
 environment-agency:monitoringPoint rdf:type owl:ObjectProperty .
 environment-agency:monitoringPoint rdfs:domain environment-agency:Permit .
-environment-agency:monitoringPoint rdfs:range environment-agency:MonitoringPoint .
+environment-agency:monitoringPoint rdfs:range environment-agency:Location .
 environment-agency:monitoringPoint rdfs:label "monitoringPoint"@en .
 
 
@@ -79,16 +88,15 @@ environment-agency:bodyText rdfs:domain environment-agency:Permit .
 environment-agency:bodyText rdfs:range xsd:string .
 environment-agency:bodyText rdfs:label "bodyText"@en .
 
-
 environment-agency:label rdf:type owl:DatatypeProperty .
-environment-agency:label rdfs:domain environment-agency:DischargePoint .
+environment-agency:label rdfs:domain environment-agency:Concept .
 environment-agency:label rdfs:range xsd:string .
 environment-agency:label rdfs:label "label"@en .
 
-environment-agency:label rdf:type owl:DatatypeProperty .
-environment-agency:label rdfs:domain environment-agency:EffluentType .
-environment-agency:label rdfs:range xsd:string .
-environment-agency:label rdfs:label "label"@en .
+environment-agency:definition rdf:type owl:DatatypeProperty .
+environment-agency:definition rdfs:domain environment-agency:Concept .
+environment-agency:definition rdfs:range xsd:string .
+environment-agency:definition rdfs:label "definition"@en .
 
 
 environment-agency:label rdf:type owl:DatatypeProperty .
