@@ -24,27 +24,27 @@ environment-agency:Location rdfs:isDefinedBy environment-agency:location-ontolog
 
 
 environment-agency:NamedLocation rdf:type owl:Class .
-environment-agency:NamedLocation rdfs:subClassof environment-agency:Location.
+environment-agency:NamedLocation rdfs:subClassOf environment-agency:Location.
 environment-agency:NamedLocation rdfs:label "NamedLocation"@en .
 environment-agency:NamedLocation rdfs:comment "A geographic location with a name. The name should come from a predefined naming convention where posisble."@en .
 environment-agency:NamedLocation rdfs:isDefinedBy environment-agency:location-ontology .
 
 environment-agency:LocationWithOnlyExtent rdf:type owl:Class .
-environment-agency:LocationWithOnlyExtent rdfs:subClassof environment-agency:Location.
+environment-agency:LocationWithOnlyExtent rdfs:subClassOf environment-agency:Location.
 environment-agency:LocationWithOnlyExtent rdfs:label "LocationWithOnlyExtent"@en .
 environment-agency:LocationWithOnlyExtent rdfs:comment "A geographic location that will have some geographic extent but not intentded to be used as a named or addressable. A single discharge or monitoring point for example might given only as a point co-ordinate. "@en .
 environment-agency:LocationWithOnlyExtent rdfs:isDefinedBy environment-agency:location-ontology .
 
 
 environment-agency:OperationalLocation rdf:type owl:Class .
-environment-agency:OperationalLocation rdfs:subClassof environment-agency:Location.
+environment-agency:OperationalLocation rdfs:subClassOf environment-agency:Location.
 environment-agency:OperationalLocation rdfs:label "OperationalLocation"@en .
 environment-agency:OperationalLocation rdfs:comment "A geographically bounded region that serves as a functional unit for a specific organization, authority, or stakeholder to conduct operations, exercise jurisdiction, provide services, or manage resources within defined spatial limits."@en .
 environment-agency:OperationalLocation rdfs:isDefinedBy environment-agency:location-ontology .
 
 
 environment-agency:AddressableLocation rdf:type owl:Class .
-environment-agency:AddressableLocation rdfs:subClassof environment-agency:NamedLocation.
+environment-agency:AddressableLocation rdfs:subClassOf environment-agency:NamedLocation.
 environment-agency:AddressableLocation rdfs:label "AddressableLocation"@en .
 environment-agency:AddressableLocation rdfs:comment "A geographic location that can be assigned an addresss. For example an postal address or equivalent."@en .
 environment-agency:AddressableLocation rdfs:isDefinedBy environment-agency:location-ontology .
