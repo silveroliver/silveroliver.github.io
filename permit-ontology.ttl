@@ -21,28 +21,42 @@ environment-agency:permit-ontology
 environment-agency:Party rdf:type owl:Class .
 environment-agency:Party rdfs:subClassOf environment-agency:Concept.
 environment-agency:Party rdfs:label "Party"@en .
+environment-agency:Party rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 environment-agency:Concept rdf:type owl:Class .
 environment-agency:Concept rdfs:label "Concept"@en .
+environment-agency:Concept rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 environment-agency:Location rdf:type owl:Class .
 environment-agency:Location rdfs:label "Location"@en .
 environment-agency:Location rdfs:comment "A location where we collect time series data."@en .
+environment-agency:Location rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 environment-agency:Permit rdf:type owl:Class .
 environment-agency:Permit rdfs:label "Permit"@en .
+environment-agency:Permit rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 environment-agency:Purpose rdf:type owl:Class .
 environment-agency:EffluentType rdfs:subClassOf environment-agency:Concept.
 environment-agency:Purpose rdfs:label "Purpose"@en .
+environment-agency:Purpose rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 environment-agency:Waterbody rdf:type owl:Class .
-environment-agency:Waterbody rdfs:label "Water body"@en .
+environment-agency:Waterbody rdfs:label "Waterbody"@en .
 environment-agency:Waterbody rdfs:comment "A discrete and significant element of surface water such as a lake or reservoir or entire (or part) stream, river or canal, estuary or stretch of coastal water"@en .
+environment-agency:Waterbody rdfs:isDefinedBy environment-agency:permit-ontology .
 
-environment-agency:Waterbody rdf:type owl:Class .
-environment-agency:Waterbody rdfs:label "Site"@en .
-environment-agency:Waterbody rdfs:comment "The addressable location that a permit is authorised to"@en .
+
+environment-agency:Site rdf:type owl:Class .
+environment-agency:Site rdfs:label "Site"@en .
+environment-agency:Site rdfs:comment "The addressable location that a permit is authorised to"@en .
+environment-agency:Party rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 
 # Object Properties
@@ -51,33 +65,45 @@ environment-agency:dischargePoint rdf:type owl:ObjectProperty .
 environment-agency:dischargePoint rdfs:domain environment-agency:Permit .
 environment-agency:dischargePoint rdfs:range environment-agency:Location .
 environment-agency:dischargePoint rdfs:label "dischargePoint"@en .
+environment-agency:dischargePoint rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 
 environment-agency:effluentType rdf:type owl:ObjectProperty .
 environment-agency:effluentType rdfs:domain environment-agency:Permit .
 environment-agency:effluentType rdfs:range environment-agency:EffluentType .
 environment-agency:effluentType rdfs:label "effluentType"@en .
+environment-agency:effluentType rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 environment-agency:associatedOperationalLocation rdf:type owl:ObjectProperty .
 environment-agency:associatedOperationalLocation rdfs:domain environment-agency:Location .
 environment-agency:associatedOperationalLocation rdfs:range environment-agency:Waterbody .
 environment-agency:associatedOperationalLocation rdfs:label "associatedOperationalLocation"@en .
+environment-agency:associatedOperationalLocation rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 environment-agency:monitoringPoint rdf:type owl:ObjectProperty .
 environment-agency:monitoringPoint rdfs:domain environment-agency:Permit .
 environment-agency:monitoringPoint rdfs:range environment-agency:Location .
 environment-agency:monitoringPoint rdfs:label "monitoringPoint"@en .
+environment-agency:monitoringPoint rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 
 environment-agency:permitForSite rdf:type owl:ObjectProperty .
 environment-agency:permitForSite rdfs:domain environment-agency:Permit .
 environment-agency:permitForSite rdfs:range environment-agency:Site .
 environment-agency:permitForSite rdfs:label "permitForSite"@en .
+environment-agency:permitForSite rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 environment-agency:permitHolder rdf:type owl:ObjectProperty .
 environment-agency:permitHolder rdfs:domain environment-agency:Permit .
 environment-agency:permitHolder rdfs:range environment-agency:Party .
 environment-agency:permitHolder rdfs:label "permitHolder"@en .
+environment-agency:permitHolder rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 
 # Datatype Properties
@@ -87,32 +113,44 @@ environment-agency:bodyText rdf:type owl:DatatypeProperty .
 environment-agency:bodyText rdfs:domain environment-agency:Permit .
 environment-agency:bodyText rdfs:range xsd:string .
 environment-agency:bodyText rdfs:label "bodyText"@en .
+environment-agency:bodyText rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 environment-agency:label rdf:type owl:DatatypeProperty .
 environment-agency:label rdfs:domain environment-agency:Concept .
 environment-agency:label rdfs:range xsd:string .
 environment-agency:label rdfs:label "label"@en .
+environment-agency:label rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 environment-agency:definition rdf:type owl:DatatypeProperty .
 environment-agency:definition rdfs:domain environment-agency:Concept .
 environment-agency:definition rdfs:range xsd:string .
 environment-agency:definition rdfs:label "definition"@en .
+environment-agency:defintion rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 
 environment-agency:label rdf:type owl:DatatypeProperty .
 environment-agency:label rdfs:domain environment-agency:Permit .
 environment-agency:label rdfs:range xsd:string .
 environment-agency:label rdfs:label "label"@en .
+environment-agency:label rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 environment-agency:permitNumber rdf:type owl:DatatypeProperty .
 environment-agency:permitNumber rdfs:domain environment-agency:Permit .
 environment-agency:permitNumber rdfs:range xsd:string .
 environment-agency:permitNumber rdfs:label "permitNumber"@en .
+environment-agency:permitNumber rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 environment-agency:revoctionDate rdf:type owl:DatatypeProperty .
 environment-agency:revoctionDate rdfs:domain environment-agency:Permit .
 environment-agency:revoctionDate rdfs:range xsd:date .
 environment-agency:revoctionDate rdfs:label "revoctionDate"@en .
+environment-agency:revoctionDate rdfs:isDefinedBy environment-agency:permit-ontology .
+
 
 environment-agency:startDate rdf:type owl:DatatypeProperty .
 environment-agency:startDate rdfs:domain environment-agency:Permit .
