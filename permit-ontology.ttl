@@ -37,7 +37,7 @@ environment-agency:Location rdfs:isDefinedBy environment-agency:permit-ontology 
 
 environment-agency:Permit rdf:type owl:Class .
 environment-agency:Permit rdfs:label "Permit"@en .
-environment-agency:Waterbody rdfs:comment "A permit allocated to a permit holder to allow them to discharge into a waterbody at a specific point with certain constraints. The unique id for a perimit should have no special characters."@en .
+environment-agency:Permit rdfs:comment "A permit allocated to a permit holder to allow them to discharge into a waterbody at a specific point with certain constraints. The unique id for a perimit should have no special characters."@en .
 environment-agency:Permit rdfs:isDefinedBy environment-agency:permit-ontology .
 
 
@@ -143,7 +143,7 @@ environment-agency:permitNumber rdf:type owl:DatatypeProperty .
 environment-agency:permitNumber rdfs:domain environment-agency:Permit .
 environment-agency:permitNumber rdfs:range xsd:string .
 environment-agency:permitNumber rdfs:label "permitNumber"@en .
-environment-agency:permitNumber rdfs:comment "The permit number as printed including special characters as a human would read it."@en .
+environment-agency:permitNumber rdfs:comment "The permit number as printed including special characters as would appear on the PDF."@en .
 environment-agency:permitNumber rdfs:isDefinedBy environment-agency:permit-ontology .
 
 
