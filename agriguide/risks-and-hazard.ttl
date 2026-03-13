@@ -1,0 +1,436 @@
+@prefix cla: <https://data.agriguide.ag/ontologies/agent/> .
+@prefix cli: <https://data.agriguide.ag/ontologies/interval/> .
+@prefix clid: <https://data.agriguide.ag/ontologies/identifier/> .
+@prefix clq: <https://data.agriguide.ag/ontologies/quantity/> .
+@prefix clp: <https://data.agriguide.ag/ontologies/product/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+
+clp:
+    a owl:Ontology ;
+    dcterms:title "AgriGuide - Product Domain Model - Risk"@en ;
+    dcterms:created "2022-11-14"^^xsd:date ;
+    dcterms:modified "2026-03-12"^^xsd:date ;
+    dc:publisher "Croplife Europe" ;
+    dcterms:description """This Product Ontology encodes the Croplife EU Digital Product Label information model. It is designed to provide a structural backbone which complies with EU Commission Regulation 547/2011, that provides fully structured - and therefore
+        machine-readable - data regarding product usage information, and that can be extended by users to encode additional regulatory 
+        requirements at a national or territory level. Where possible, references to the relevant legislation are included in the 
+        class and property documentation.
+    """@en ;
+    rdfs:comment "<p><i><b>The following diagram is manually maintained and indicative only (with no guarantee of formal accuracy): please see the schemas and text documentation for the formal specification</b></i></p><img src='./../img/product.png' style='width:100%;margin-top:25px'>"@en ;
+    owl:versionInfo "1.1"^^xsd:string ;
+    vann:preferredNamespaceUri "https://data.agriguide.ag/ontologies/product/" ;
+    vann:preferredNamespacePrefix "clp" ;
+    dcterms:rights "(c) Croplife Europe"@en  .
+
+
+############## Classes ##############
+
+
+clp:RiskAssessment
+    a owl:Class ;
+    skos:prefLabel "RiskAssessment"@en ;
+    skos:definition "The risks assessment and hazard statements for the registered formulation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+clp:hazardClassifications
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RiskAssessment ;
+    rdfs:range clp:HazardClassification ;
+    skos:prefLabel "hazardClassifications"@en ;
+    rdfs:definition "The GHS hazard classifications of the registered formulation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:HazardClassification
+    a owl:Class ;
+    skos:prefLabel "HazardClassification"@en ;
+    skos:definition "Hazard classifications of the registered formulation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:HazardStatement
+    a owl:Class ;
+    skos:prefLabel "HazardStatement"@en ;
+    skos:definition "A hazard statement asserted as part of the registered formulation's risk assessment"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:ClpControlledHazardReference
+    a owl:Class ;
+    rdfs:subClassOf clp:HazardStatement ;
+    skos:prefLabel "ClpControlledHazardReference"@en ;
+    skos:definition "An instance of a hazard statement from the CLP controlled vocabulary of hazards with placeholder words where appropriate"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:RegulatorControlledHazardReference
+    a owl:Class ;
+    rdfs:subClassOf clp:HazardStatement ;
+    skos:prefLabel "RegulatorControlledHazardReference"@en ;
+    skos:definition "An instance of a hazard statement from a national regulator controlled vocabulary of hazards with placeholder words where appropriate"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:RegulatorHazardStatement
+    a owl:Class ;
+    rdfs:subClassOf clp:HazardStatement ;
+    skos:prefLabel "RegulatorHazardStatement"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:ManufacturerHazardStatement
+    a owl:Class ;
+    rdfs:subClassOf clp:HazardStatement ;
+    skos:prefLabel "ManufacturerHazardStatement"@en ;
+    skos:definition "A free text hazard statement supplied by the regulator (in countries where the regulator does not publish a controlled vocabulary of hazard phrases)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:ClpHazardStatement
+    a owl:Class ;
+    skos:prefLabel "ClpHazardStatement"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+clp:ClpControlledHazardStatement
+    a owl:Class ;
+    skos:prefLabel "ClpControlledHazardStatement"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:RegulatorControlledHazardStatement
+    a owl:Class ;
+    skos:prefLabel "RegulatorControlledHazardStatement"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:RegulatorStatementCategory
+    a owl:Class ;
+    skos:prefLabel "RegulatorStatementCategory"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+############## Object Properties ##############
+
+
+clp:hazardStatements
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RiskAssessment ;
+    rdfs:range clp:HazardStatement ;
+    skos:prefLabel "hazardStatements"@en ;
+    rdfs:definition "The statements of hazard or risk associated with the formulation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:referencedHazard
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegulatorControlledHazardReference ;
+    rdfs:range clp:RegulatorControlledHazardStatement ;
+    skos:prefLabel "referencedHazard"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:territory
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegulatorControlledHazardStatement ;
+    rdfs:range clp:Country ;
+    skos:prefLabel "territory"@en ;
+    rdfs:definition "The territory to which the statement applies"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:hazardStatementCategory
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegulatorControlledHazardStatement ;
+    rdfs:range clp:RegulatorStatementCategory ;
+    skos:prefLabel "hazardStatementCategory"@en ;
+    rdfs:definition "The category/ies to which a national regulator statement belongs"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:subjectAtRisk
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegulatorControlledHazardStatement ;
+    rdfs:range clp:SubjectAtRisk ;
+    skos:prefLabel "subjectAtRisk"@en ;
+    rdfs:definition "The subject at risk in a hazard statement or precaution (i.e. equipment operator, water course, environment, etc)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:referencedHazard
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ClpControlledHazardReference ;
+    rdfs:range clp:ClpControlledHazardStatement ;
+    skos:prefLabel "referencedHazard"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:subjectAtRisk
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegulatorHazardStatement ;
+    rdfs:range clp:SubjectAtRisk ;
+    skos:prefLabel "subjectAtRisk"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:subjectAtRisk
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ManufacturerHazardStatement ;
+    rdfs:range clp:SubjectAtRisk ;
+    skos:prefLabel "subjectAtRisk"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:subjectAtRisk
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ClpHazardStatement ;
+    rdfs:range clp:SubjectAtRisk ;
+    skos:prefLabel "subjectAtRisk"@en ;
+    rdfs:definition "The thing being protected (environment, water, etc)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:subjectAtRisk
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ClpControlledHazardStatement ;
+    rdfs:range clp:SubjectAtRisk ;
+    skos:prefLabel "subjectAtRisk"@en ;
+    rdfs:definition "The subject at risk in a hazard statement or precaution (i.e. equipment operator, water course, environment, etc)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:risks
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:RiskAssessment ;
+    skos:prefLabel "risks"@en ;
+    rdfs:definition "The product risk assessment and known hazards"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+############## Data Properties ##############
+
+
+clp:pictogram
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:HazardClassification ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "pictogram"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:text
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:HazardStatement ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "text"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:signalWord
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RiskAssessment ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "signalWord"@en ;
+    rdfs:definition "The signal word associated with the hazard classifications"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:placeholderWords
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:ClpControlledHazardReference ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "placeholderWords"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:placeholderWords
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatorControlledHazardReference ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "placeholderWords"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:isNote
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatorControlledHazardReference ;
+    rdfs:range clp:xsd:boolean ;
+    skos:prefLabel "isNote"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:isNote
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatorHazardStatement ;
+    rdfs:range clp:xsd:boolean ;
+    skos:prefLabel "isNote"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:regulatoryCode
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatorHazardStatement ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "regulatoryCode"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:regulatoryCode
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:ClpHazardStatement ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "regulatoryCode"@en ;
+    rdfs:definition "The one or more regulatory codes"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:code
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:ClpControlledHazardStatement ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "code"@en ;
+    rdfs:definition "The code of the statement"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:statement
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:ClpControlledHazardStatement ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "statement"@en ;
+    rdfs:definition "The text of the statement"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:code
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatorControlledHazardStatement ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "code"@en ;
+    rdfs:definition "The code of the statement"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:statement
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatorControlledHazardStatement ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "statement"@en ;
+    rdfs:definition "The text of the statement"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:text
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:ClpHazardStatement ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "text"@en ;
+    rdfs:definition "The text of the statement"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+############## Interface Classes ##############
+
+
+clp:SubjectAtRisk
+    a owl:Class ;
+    skos:prefLabel "SubjectAtRisk"@en ;
+    skos:definition "The subject at risk in a hazard statement or precaution (i.e. equipment operator, water course, environment, etc)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:RegisteredFormulation
+    a owl:Class ;
+    skos:prefLabel "RegisteredFormulation"@en ;
+    skos:definition "A crop protection product formulation that has been registered in a country or region"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+############## Labels ##############
+
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:ClpControlledHazardStatement ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatorStatementCategory ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatorControlledHazardStatement ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:HazardClassification ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.

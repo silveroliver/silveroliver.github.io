@@ -1,0 +1,464 @@
+@prefix cla: <https://data.agriguide.ag/ontologies/agent/> .
+@prefix cli: <https://data.agriguide.ag/ontologies/interval/> .
+@prefix clid: <https://data.agriguide.ag/ontologies/identifier/> .
+@prefix clq: <https://data.agriguide.ag/ontologies/quantity/> .
+@prefix clp: <https://data.agriguide.ag/ontologies/product/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+clp:
+    a owl:Ontology ;
+    dcterms:title "AgriGuide - Product Domain Model - Core"@en ;
+    dcterms:created "2022-11-14"^^xsd:date ;
+    dcterms:modified "2026-03-12"^^xsd:date ;
+    dc:publisher "Croplife Europe" ;
+    dcterms:description """This Product Ontology encodes the core part of the Croplife EU Digital Product Label information model. It is designed to provide a structural backbone which complies with EU Commission Regulation 547/2011, that provides fully structured - and therefore
+        machine-readable - data regarding product usage information, and that can be extended by users to encode additional regulatory 
+        requirements at a national or territory level. Where possible, references to the relevant legislation are included in the 
+        class and property documentation.
+    """@en ;
+    rdfs:comment "<p><i><b>The following diagram is manually maintained and indicative only (with no guarantee of formal accuracy): please see the schemas and text documentation for the formal specification</b></i></p><img src='./../img/product.png' style='width:100%;margin-top:25px'>"@en ;
+    owl:versionInfo "1.1"^^xsd:string ;
+    vann:preferredNamespaceUri "https://data.agriguide.ag/ontologies/product/" ;
+    vann:preferredNamespacePrefix "clp" ;
+    dcterms:rights "(c) Croplife Europe"@en  .
+
+############## Classes ##############
+
+
+clp:Country
+    a owl:Class ;
+    skos:prefLabel "Country"@en ;
+    skos:definition "A geographic country"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:PreparationType
+    a owl:Class ;
+    skos:prefLabel "PreparationType"@en ;
+    skos:definition "The formulation preparation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:MaterialState
+    a owl:Class ;
+    skos:prefLabel "MaterialState"@en ;
+    skos:definition "The material state of a substance"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:ProductActionType
+    a owl:Class ;
+    skos:prefLabel "ProductActionType"@en ;
+    skos:definition "The type of the product"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:RegisteredFormulation
+    a owl:Class ;
+    skos:prefLabel "RegisteredFormulation"@en ;
+    skos:definition "A crop protection product formulation that has been registered in a country or region"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:Temperature
+    a owl:Class ;
+    rdfs:subClassOf clp:Quantity ;
+    skos:prefLabel "Temperature"@en ;
+    skos:definition "An interface class assigned via range inference which maps to an explicitly defined Temperature from the Quantity ontology."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:AdverseEffect
+    a owl:Class ;
+    skos:prefLabel "AdverseEffect"@en ;
+    skos:definition "The identified adverse effects of the registered formulation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:AdverseEffectType
+    a owl:Class ;
+    skos:prefLabel "AdverseEffectType"@en ;
+    skos:definition "The type of adverse effect, such as phytotoxicity"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+############## Object Properties ##############
+
+
+clp:coformulantsQbaStatement
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:CoformulantsQbaStatement ;
+    skos:prefLabel "coformulantsQbaStatement"@en ;
+    rdfs:definition "Any statement regarding coformulants if required in a territory"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:manufacturer
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:Agent ;
+    skos:prefLabel "manufacturer"@en ;
+    rdfs:definition "The manufacturer of the registered formulation if different from the authorisation holder"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:manufacturingLocation
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:Agent ;
+    skos:prefLabel "manufacturingLocation"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:marketedBy
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:Agent ;
+    skos:prefLabel "marketedBy"@en ;
+    rdfs:definition "The organisation who supply or market the product if different from the authorisation holder"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:productActionType
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:ProductActionType ;
+    skos:prefLabel "productActionType"@en ;
+    rdfs:definition "The high-level product type (insecticide, herbicide, fungicide or growth regulator) - todo: review for controlled vocab"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:preparationType
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:PreparationType ;
+    skos:prefLabel "preparationType"@en ;
+    rdfs:definition "The preparation type of the formulation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:materialState
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:MaterialState ;
+    skos:prefLabel "materialState"@en ;
+    rdfs:definition "The material state/s of the product"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:technicalSupportOrganisation
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:Agent ;
+    skos:prefLabel "technicalSupportOrganisation"@en ;
+    rdfs:definition "The organisation to be contacted by growers for technical support, if specified"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:territory
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:Country ;
+    skos:prefLabel "territory"@en ;
+    rdfs:definition "The country or territory in which the product is authorised"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:adverseEffectType
+    a owl:ObjectProperty ;
+    rdfs:domain clp:AdverseEffect ;
+    rdfs:range clp:AdverseEffectType ;
+    skos:prefLabel "adverseEffectType"@en ;
+    rdfs:definition "The type of adverse effect, most typically phytotoxicity or varietal susceptibility"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:impactedCrop
+    a owl:ObjectProperty ;
+    rdfs:domain clp:AdverseEffect ;
+    rdfs:range clp:TargetCrop ;
+    skos:prefLabel "impactedCrop"@en ;
+    rdfs:definition "The crop impacted by the specified adverse effects"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:cropRelation
+    a owl:ObjectProperty ;
+    rdfs:domain clp:AdverseEffect ;
+    rdfs:range clp:CropRelation ;
+    skos:prefLabel "cropRelation"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+
+############## Data Properties ##############
+
+
+
+
+clp:tradeName
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "tradeName"@en ;
+    rdfs:definition "The trade name of the product"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:brand
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "brand"@en ;
+    rdfs:definition "The brand under which the product is marketed if different from the authorisation holder name"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+clp:summaryNotes
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "summaryNotes"@en ;
+    rdfs:definition "Any introductory text, product summary or general overview information which appears on the label"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:modeOfActionDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "modeOfActionDescription"@en ;
+    rdfs:definition "A textual description of the mode of action of the complete formulation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:otherMandatoryInformation
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "otherMandatoryInformation"@en ;
+    rdfs:definition "Any other mandatory information about the registered formulation which must be displayed on the label"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:additionalAdvisoryInformation
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "additionalAdvisoryInformation"@en ;
+    rdfs:definition "Any additional advisory information on the label that does not belong on any other property in the model"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:additionalInstructionsLink
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "additionalInstructionsLink"@en ;
+    rdfs:definition "Link to any additional instructions, which must be available for consumption or download online"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:unNumber
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "unNumber"@en ;
+    rdfs:definition "The UN number for the formulation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+clp:resistanceInformation
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "resistanceInformation"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:cropRotationGuidance
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "cropRotationGuidance"@en ;
+    rdfs:definition "Any additional crop rotation guidance. Information regarding phytotoxicity to successional crops should also be captured via adverse effects. Information relating to resistance management should also be captured under resistance management information."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:successionalCropGuidance
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "successionalCropGuidance"@en ;
+    rdfs:definition "Guidance relating specifically to successional sowing in the target field"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:cropFailureGuidance
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "cropFailureGuidance"@en ;
+    rdfs:definition "Any guidance relating to crop failure."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:ipmStatement
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "ipmStatement"@en ;
+    rdfs:definition "An integrated pest management statement"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:colour
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "colour"@en ;
+    rdfs:definition "The colour of the formulation (provided as a check for the grower in case the product package has been reused)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:odour
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "odour"@en ;
+    rdfs:definition "The odour of the formulation (provided as a check for the grower in case the product package has been reused)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:description
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:PreparationType ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "description"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:code
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:PreparationType ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "code"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:adverseEffectDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:AdverseEffect ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "adverseEffectDescription"@en ;
+    rdfs:definition "The description and guidance relating to an adverse effect (e.g. phytotoxicity)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:isActive
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:ProductActionType ;
+    rdfs:range clp:xsd:boolean ;
+    skos:prefLabel "isActive"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:ProductActionType ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:description
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:ProductActionType ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "description"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+############## Interface Classes ##############
+
+clp:TargetCrop
+    a owl:Class ;
+    skos:prefLabel "TargetCrop"@en ;
+    skos:definition "A crop description, specified in terms of the crop organism plus optionally growth stages and/or commodity"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:CropRelation
+    a owl:Class ;
+    skos:prefLabel "CropRelation"@en ;
+    skos:definition "A type of crop relation: i.e. target, adjacent or successional"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+############## Labels ##############
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:PreparationType ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:AdverseEffectType ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:MaterialState ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+

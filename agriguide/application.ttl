@@ -1,0 +1,1098 @@
+@prefix cla: <https://data.agriguide.ag/ontologies/agent/> .
+@prefix cli: <https://data.agriguide.ag/ontologies/interval/> .
+@prefix clid: <https://data.agriguide.ag/ontologies/identifier/> .
+@prefix clq: <https://data.agriguide.ag/ontologies/quantity/> .
+@prefix clp: <https://data.agriguide.ag/ontologies/product/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+
+clp:
+    a owl:Ontology ;
+    dcterms:title "AgriGuide - Product Domain Model - application directions"@en ;
+    dcterms:created "2022-11-14"^^xsd:date ;
+    dcterms:modified "2026-03-12"^^xsd:date ;
+    dc:publisher "Croplife Europe" ;
+    dcterms:description """This Product Ontology encodes the Croplife EU Digital Product Label information model. It is designed to provide a structural backbone which complies with EU Commission Regulation 547/2011, that provides fully structured - and therefore
+        machine-readable - data regarding product usage information, and that can be extended by users to encode additional regulatory 
+        requirements at a national or territory level. Where possible, references to the relevant legislation are included in the 
+        class and property documentation.
+    """@en ;
+    rdfs:comment "<p><i><b>The following diagram is manually maintained and indicative only (with no guarantee of formal accuracy): please see the schemas and text documentation for the formal specification</b></i></p><img src='./../img/product.png' style='width:100%;margin-top:25px'>"@en ;
+    owl:versionInfo "1.1"^^xsd:string ;
+    vann:preferredNamespaceUri "https://data.agriguide.ag/ontologies/product/" ;
+    vann:preferredNamespacePrefix "clp" ;
+    dcterms:rights "(c) Croplife Europe"@en  .
+
+
+############## Classes ##############
+
+
+clp:Application
+    a owl:Class ;
+    rdfs:subClassOf clp:IntermediaryApplication ;
+    skos:prefLabel "Application"@en ;
+    skos:definition "The application instructions defined in a direction for use"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:NumberOfApplications
+    a owl:Class ;
+    skos:prefLabel "NumberOfApplications"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:ApplicationTarget
+    a owl:Class ;
+    skos:prefLabel "ApplicationTarget"@en ;
+    skos:definition "The timing plus site or location of application"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:BaseApplication
+    a owl:Class ;
+    skos:prefLabel "BaseApplication"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:IntermediaryApplication
+    a owl:Class ;
+    rdfs:subClassOf clp:BaseApplication ;
+    skos:prefLabel "IntermediaryApplication"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:ApplicationOptions
+    a owl:Class ;
+    rdfs:subClassOf clp:BaseApplication ;
+    skos:prefLabel "ApplicationOptions"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:ApplicationSequence
+    a owl:Class ;
+    rdfs:subClassOf clp:IntermediaryApplication ;
+    skos:prefLabel "ApplicationSequence"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:ApplicationMethod
+    a owl:Class ;
+    skos:prefLabel "ApplicationMethod"@en ;
+    skos:definition "The type of application method"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:ApplicationTargetSite
+    a owl:Class ;
+    skos:prefLabel "ApplicationTargetSite"@en ;
+    skos:definition "The location (most typically the site on the plant) where the treatment should be applied"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:ApplicationDosage
+    a owl:Class ;
+    skos:prefLabel "ApplicationDosage"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:TreatmentWindow
+    a owl:Class ;
+    skos:prefLabel "TreatmentWindow"@en ;
+    skos:definition "The duration of time expressed as calendar dates, growth stages or higher level lifecycle events between which the registered formulation should be applied"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:Adjuvant
+    a owl:Class ;
+    skos:prefLabel "Adjuvant"@en ;
+    skos:definition "An adjuvant to be included in the tank mix. In future this should be modelled as a subclass of Registered Formulation, by for now adjuvant digital labels are out of scope"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:NozzleClass
+    a owl:Class ;
+    skos:prefLabel "NozzleClass"@en ;
+    skos:definition "A class or category of spraying nozzles"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:SprayingDirection
+    a owl:Class ;
+    rdfs:subClassOf clp:SprayingApplication ;
+    skos:prefLabel "SprayingDirection"@en ;
+    skos:definition "Machine readable structured spraying directions, qualified by certain environmental/other conditions"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:SprayingApplication
+    a owl:Class ;
+    skos:prefLabel "SprayingApplication"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:BufferZoneType
+    a owl:Class ;
+    skos:prefLabel "BufferZoneType"@en ;
+    skos:definition "The type of buffer zone (i.e. field boundary, water course, resident, bystander, endangered species, etc)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:BufferZone
+    a owl:Class ;
+    skos:prefLabel "BufferZone"@en ;
+    skos:definition "Buffer zone information for field boundaries, water courses, residents, bystanders and endangered species"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:TankMixProduct
+    a owl:Class ;
+    skos:prefLabel "TankMixProduct"@en ;
+    skos:definition "Another crop protection product which may be added into the tank mix"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:InformationSource
+    a owl:Class ;
+    skos:prefLabel "InformationSource"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+############## Object Properties ##############
+
+
+clp:applicationMethod
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:ApplicationMethod ;
+    skos:prefLabel "applicationMethod"@en ;
+    rdfs:definition "The type of application method."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:applicationTarget
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:ApplicationTarget ;
+    skos:prefLabel "applicationTarget"@en ;
+    rdfs:definition "The specified site/location and time for applying the product"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:applicationDosageExpression
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:ApplicationDosage ;
+    skos:prefLabel "applicationDosageExpression"@en ;
+    rdfs:definition "The product application dosage expression with associated provenance"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:numberOfApplications
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:NumberOfApplications ;
+    skos:prefLabel "numberOfApplications"@en ;
+    rdfs:definition "The minimum and/or maximum times the product should be used in a given time interval"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:treatmentWindow
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:TreatmentWindow ;
+    skos:prefLabel "treatmentWindow"@en ;
+    rdfs:definition "The duration of time expressed as dates, growth stages or higher level lifecycle events between which the registered formulation should be applied."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:repeatInterval
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Duration ;
+    skos:prefLabel "repeatInterval"@en ;
+    rdfs:definition "The recommended duration between applications where applicable"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:authorisedAbsoluteDoseRate
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Dosage ;
+    skos:prefLabel "authorisedAbsoluteDoseRate"@en ;
+    rdfs:definition "The authorised range of absolute dose rates in mass of substance per unit of ground area"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:adjuvant
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Adjuvant ;
+    skos:prefLabel "adjuvant"@en ;
+    rdfs:definition "Adjuvant products which should be added to the tank mix"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:adjuvantAmountPerTreatment
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Dosage ;
+    skos:prefLabel "adjuvantAmountPerTreatment"@en ;
+    rdfs:definition "The adjuvant amount to be added to the application mix"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:waterVolumePerTreatment
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Dosage ;
+    skos:prefLabel "waterVolumePerTreatment"@en ;
+    rdfs:definition "The product application water amount per treatment"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:temperature
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Temperature ;
+    skos:prefLabel "temperature"@en ;
+    rdfs:definition "The minimum and/or maximum temperature within which the product should be used."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:rainPreApplicationInterval
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Duration ;
+    skos:prefLabel "rainPreApplicationInterval"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:forecastRainPostApplicationInterval
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Duration ;
+    skos:prefLabel "forecastRainPostApplicationInterval"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:windSpeed
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Velocity ;
+    skos:prefLabel "windSpeed"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:vehicleSpeed
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Velocity ;
+    skos:prefLabel "vehicleSpeed"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:nozzleClass
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:NozzleClass ;
+    skos:prefLabel "nozzleClass"@en ;
+    rdfs:definition "The default nozzle drift reduction classes to be used for spraying"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:sprayingInstructionsStructured
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:SprayingDirection ;
+    skos:prefLabel "sprayingInstructionsStructured"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:bufferZones
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:BufferZone ;
+    skos:prefLabel "bufferZones"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:tankMixPrecludedProduct
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:TankMixProduct ;
+    skos:prefLabel "tankMixPrecludedProduct"@en ;
+    rdfs:definition "Any products which should explicitly not be added into the tank mix due to their impact on the current product"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:preHarvestInterval
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Duration ;
+    skos:prefLabel "preHarvestInterval"@en ;
+    rdfs:definition "The safety interval to be observed between application and harvesting of the crop"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:animalReEntryInterval
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Duration ;
+    skos:prefLabel "animalReEntryInterval"@en ;
+    rdfs:definition "The safety interval to be observed between application and access to the treated area by animals (e.g. grazing livestock)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:humanReEntryInterval
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Duration ;
+    skos:prefLabel "humanReEntryInterval"@en ;
+    rdfs:definition "The safety interval to be observed between application and access to the treated area by humans"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:cropSowingPlantingInterval
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Duration ;
+    skos:prefLabel "cropSowingPlantingInterval"@en ;
+    rdfs:definition "The safety interval to be observed between application to the ground and subsequent sowing or planting of the crop"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:successionalCropSowingPlantingInterval
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Duration ;
+    skos:prefLabel "successionalCropSowingPlantingInterval"@en ;
+    rdfs:definition "The safety interval to be observed between application and successional sowing or planting of the next crop"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:additionalSafetyIntervals
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:SafetyInterval ;
+    skos:prefLabel "additionalSafetyIntervals"@en ;
+    rdfs:definition "Any additional safety intervals"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:plantingDensity
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:PlantDensity ;
+    skos:prefLabel "plantingDensity"@en ;
+    rdfs:definition "The maximum authorised planting density for use with the product"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:seedingRate
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:SeedingRate ;
+    skos:prefLabel "seedingRate"@en ;
+    rdfs:definition "The maximum authorised seeding rate for use with the product"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:sowingDepth
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:Distance ;
+    skos:prefLabel "sowingDepth"@en ;
+    rdfs:definition "The minimum or maximum seed sowing depth"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:options
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ApplicationOptions ;
+    rdfs:range clp:IntermediaryApplication ;
+    skos:prefLabel "options"@en ;
+    rdfs:definition "The alternative application guidance options in the split application"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:steps
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ApplicationSequence ;
+    rdfs:range clp:Application ;
+    skos:prefLabel "steps"@en ;
+    rdfs:definition "The steps of the application sequence"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:totalNumberOfApplications
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ApplicationSequence ;
+    rdfs:range clp:NumberOfApplications ;
+    skos:prefLabel "totalNumberOfApplications"@en ;
+    rdfs:definition "The treatment limits which apply across the whole application sequence"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:applicationTargetTime
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ApplicationTarget ;
+    rdfs:range clp:Interval ;
+    skos:prefLabel "applicationTargetTime"@en ;
+    rdfs:definition "The relative interval at which the product should be applied (e.g. n days before sowing)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:soilType
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ApplicationTarget ;
+    rdfs:range clp:SoilType ;
+    skos:prefLabel "soilType"@en ;
+    rdfs:definition "The soil type/s for which this application guidance applies"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:applicationTargetSite
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ApplicationTarget ;
+    rdfs:range clp:ApplicationTargetSite ;
+    skos:prefLabel "applicationTargetSite"@en ;
+    rdfs:definition "The target site, medium or location of the application"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:dosage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ApplicationDosage ;
+    rdfs:range clp:Dosage ;
+    skos:prefLabel "dosage"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:source
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ApplicationDosage ;
+    rdfs:range clp:InformationSource ;
+    skos:prefLabel "source"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+clp:applicationTotalDosageExpression
+    a owl:ObjectProperty ;
+    rdfs:domain clp:NumberOfApplications ;
+    rdfs:range clp:Dosage ;
+    skos:prefLabel "applicationTotalDosageExpression"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:perDuration
+    a owl:ObjectProperty ;
+    rdfs:domain clp:NumberOfApplications ;
+    rdfs:range clp:Duration ;
+    skos:prefLabel "perDuration"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:activeIngredientTotalDosageExpression
+    a owl:ObjectProperty ;
+    rdfs:domain clp:NumberOfApplications ;
+    rdfs:range clp:ActiveIngredientTotalDosageExpression ;
+    skos:prefLabel "activeIngredientTotalDosageExpression"@en ;
+    rdfs:definition "The active ingredient to which the specific dosage limit applies"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:totalDosageExpression
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ActiveIngredientTotalDosageExpression ;
+    rdfs:range clp:Dosage ;
+    skos:prefLabel "totalDosageExpression"@en ;
+    rdfs:definition "The total dosage expression"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:activeIngredient
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ActiveIngredientTotalDosageExpression ;
+    rdfs:range clp:Substance ;
+    skos:prefLabel "activeIngredient"@en ;
+    rdfs:definition "The active ingredient to which the specific dosage limit applies"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:startLifecycleStage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TreatmentWindow ;
+    rdfs:range clp:LifecycleStage ;
+    skos:prefLabel "startLifecycleStage"@en ;
+    rdfs:definition "The lifecycle stage which marks the start of the treatment window"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:endLifecycleStage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TreatmentWindow ;
+    rdfs:range clp:LifecycleStage ;
+    skos:prefLabel "endLifecycleStage"@en ;
+    rdfs:definition "The lifecycle stage which marks the end of the treatment window"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:startCropGrowthStage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TreatmentWindow ;
+    rdfs:range clp:GrowthStage ;
+    skos:prefLabel "startCropGrowthStage"@en ;
+    rdfs:definition "The crop growth stage which marks the start of the treatment window"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:endCropGrowthStage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TreatmentWindow ;
+    rdfs:range clp:GrowthStage ;
+    skos:prefLabel "endCropGrowthStage"@en ;
+    rdfs:definition "The crop growth stage which marks the end of the treatment window"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:startWeedGrowthStage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TreatmentWindow ;
+    rdfs:range clp:GrowthStage ;
+    skos:prefLabel "startWeedGrowthStage"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:endWeedGrowthStage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TreatmentWindow ;
+    rdfs:range clp:GrowthStage ;
+    skos:prefLabel "endWeedGrowthStage"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:windSpeed
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SprayingApplication ;
+    rdfs:range clp:Velocity ;
+    skos:prefLabel "windSpeed"@en ;
+    rdfs:definition "Wind speed"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:vehicleSpeed
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SprayingApplication ;
+    rdfs:range clp:Velocity ;
+    skos:prefLabel "vehicleSpeed"@en ;
+    rdfs:definition "Speed of the tractor carrying the spraying equipment"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:rainPreApplicationInterval
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SprayingApplication ;
+    rdfs:range clp:Duration ;
+    skos:prefLabel "rainPreApplicationInterval"@en ;
+    rdfs:definition "The time since it last rained"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:forecastRainPostApplicationInterval
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SprayingApplication ;
+    rdfs:range clp:Duration ;
+    skos:prefLabel "forecastRainPostApplicationInterval"@en ;
+    rdfs:definition "The forecast time until the next rain"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:bufferZones
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SprayingApplication ;
+    rdfs:range clp:BufferZone ;
+    skos:prefLabel "bufferZones"@en ;
+    rdfs:definition "The collection of buffer zones relevant to the associated specified conditions"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:nozzleClass
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SprayingApplication ;
+    rdfs:range clp:NozzleClass ;
+    skos:prefLabel "nozzleClass"@en ;
+    rdfs:definition "The drift reduction class of the nozzle"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:sprayPressure
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SprayingDirection ;
+    rdfs:range clp:Pressure ;
+    skos:prefLabel "sprayPressure"@en ;
+    rdfs:definition "The spray pressure for the type of nozzle in use, specified as a constraint qualifying the spraying directions"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:groundInclinationRange
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SprayingDirection ;
+    rdfs:range clp:Angle ;
+    skos:prefLabel "groundInclinationRange"@en ;
+    rdfs:definition "The ground inclination, specified as a constraint qualifying the spraying directions"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:nozzleDropletSize
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SprayingDirection ;
+    rdfs:range clp:Distance ;
+    skos:prefLabel "nozzleDropletSize"@en ;
+    rdfs:definition "The spray droplet size achievable with the type of nozzle in use, specified as a constraint qualifying the spraying directions"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:nozzleDriftReduction
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SprayingDirection ;
+    rdfs:range clp:Percentage ;
+    skos:prefLabel "nozzleDriftReduction"@en ;
+    rdfs:definition "The drift reduction achievable with the type of nozzle in use, specified as a constraint qualifying the spraying directions"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:nozzleApplicationDosageReduction
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SprayingDirection ;
+    rdfs:range clp:Percentage ;
+    skos:prefLabel "nozzleApplicationDosageReduction"@en ;
+    rdfs:definition "The percentage reduction in dosage achievable with the type of nozzle in use, specified as a constraint qualifying the spraying directions"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:vegetationBarrierDepth
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SprayingDirection ;
+    rdfs:range clp:Distance ;
+    skos:prefLabel "vegetationBarrierDepth"@en ;
+    rdfs:definition "The depth of vegetation barrier to which the buffer zone info applies"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:applicationDosageRate
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SprayingDirection ;
+    rdfs:range clp:Dosage ;
+    skos:prefLabel "applicationDosageRate"@en ;
+    rdfs:definition "The specific application dose rate to which the buffer zone info applies (e.g. if the dose rate is a range in the main DFU)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:minGrowthStage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SprayingDirection ;
+    rdfs:range clp:GrowthStage ;
+    skos:prefLabel "minGrowthStage"@en ;
+    rdfs:definition "The minimum growth stage of the crop against which the buffer zone/s apply"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:maxGrowthStage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SprayingDirection ;
+    rdfs:range clp:GrowthStage ;
+    skos:prefLabel "maxGrowthStage"@en ;
+    rdfs:definition "The maximum growth stage of the crop against which the buffer zone/s apply"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:bufferZoneDepth
+    a owl:ObjectProperty ;
+    rdfs:domain clp:BufferZone ;
+    rdfs:range clp:Distance ;
+    skos:prefLabel "bufferZoneDepth"@en ;
+    rdfs:definition "The depth or size of the buffer zone"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:bufferZoneType
+    a owl:ObjectProperty ;
+    rdfs:domain clp:BufferZone ;
+    rdfs:range clp:BufferZoneType ;
+    skos:prefLabel "bufferZoneType"@en ;
+    rdfs:definition "The type of buffer zone (i.e. field boundary, water course, resident, bystander, endangered species, etc)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+############## Data Properties ##############
+
+clp:applicationInstructions
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "applicationInstructions"@en ;
+    rdfs:definition "Text placeholder for the full content on the label, to ensure no information is lost as it is encoded into structured data"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:isFrostResistant
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:xsd:boolean ;
+    skos:prefLabel "isFrostResistant"@en ;
+    rdfs:definition "Flags whether it is safe to apply the product before or during frost"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:boundaryClosedNozzleCount
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:xsd:integer ;
+    skos:prefLabel "boundaryClosedNozzleCount"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:sprayingInstructions
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "sprayingInstructions"@en ;
+    rdfs:definition "Text placeholder for the spraying instructions, to ensure no information is lost as it is encoded into structured data"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:equipmentRequirements
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "equipmentRequirements"@en ;
+    rdfs:definition "The equipment requirements for product application"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:preparationInstructions
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "preparationInstructions"@en ;
+    rdfs:definition "The preparation instructions for the formulation as they apply to this direction for use"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:combinationApplicationConstraints
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "combinationApplicationConstraints"@en ;
+    rdfs:definition "Information regarding other products which can and/or can't be safely used in the tank mix in combination with the formulation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:cleaningInstructions
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "cleaningInstructions"@en ;
+    rdfs:definition "Post-application equipment cleaning instructions."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:postApplicationGuidance
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "postApplicationGuidance"@en ;
+    rdfs:definition "Any usage guidance post-application e.g. for seed treatments"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:minNumberOfApplications
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:NumberOfApplications ;
+    rdfs:range clp:xsd:integer ;
+    skos:prefLabel "minNumberOfApplications"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:maxNumberOfApplications
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:NumberOfApplications ;
+    rdfs:range clp:xsd:integer ;
+    skos:prefLabel "maxNumberOfApplications"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:startDate
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TreatmentWindow ;
+    rdfs:range clp:xsd:date ;
+    skos:prefLabel "startDate"@en ;
+    rdfs:definition "The calendar date which marks the start of the treatment window"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:endDate
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TreatmentWindow ;
+    rdfs:range clp:xsd:date ;
+    skos:prefLabel "endDate"@en ;
+    rdfs:definition "The calendar date which marks the end of the treatment window"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:cropGrowthStageDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TreatmentWindow ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "cropGrowthStageDescription"@en ;
+    rdfs:definition "Alternative description of the crop growth stage to be displayed if BBCH description is not satisfactory"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:weedGrowthStageDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TreatmentWindow ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "weedGrowthStageDescription"@en ;
+    rdfs:definition "Alternative description of the weed growth stage to be displayed if BBCH description is not satisfactory"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:boundaryClosedNozzleCount
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:SprayingApplication ;
+    rdfs:range clp:xsd:integer ;
+    skos:prefLabel "boundaryClosedNozzleCount"@en ;
+    rdfs:definition "The number of nozzles on the end of the boom which must be closed when adjacent to any buffer zone"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:existsBarrierVegetation
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:SprayingDirection ;
+    rdfs:range clp:xsd:boolean ;
+    skos:prefLabel "existsBarrierVegetation"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:conditionalQualifier
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:SprayingDirection ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "conditionalQualifier"@en ;
+    rdfs:definition "Any additional conditional qualifier information which can not be expressed as structured data currently (e.g. soil drainage type)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:growthStageDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:SprayingDirection ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "growthStageDescription"@en ;
+    rdfs:definition "The description of the growth stage range as it appears on the label, to be used only if there are regulatory differences compared to the ref data descriptions"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+############## Interface Classes ##############
+
+clp:Duration
+    a owl:Class ;
+    rdfs:subClassOf clp:Quantity ;
+    skos:prefLabel "Duration"@en ;
+    skos:definition "An interface class assigned via range inference which maps to an explicitly defined Duration from the Quantity ontology."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:DirectionForUse
+    a owl:Class ;
+    skos:prefLabel "DirectionForUse"@en ;
+    skos:definition "Usage directions for the registered formulation to treat one or more crop/pest treatment targets"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:SafetyInterval
+    a owl:Class ;
+    rdfs:subClassOf clp:Interval ;
+    skos:prefLabel "SafetyInterval"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:PlantDensity
+    a owl:Class ;
+    rdfs:subClassOf clp:Quantity ;
+    skos:prefLabel "PlantDensity"@en ;
+    skos:definition "An interface class assigned via range inference which maps to an explicitly defined PlantDensity from the Quantity ontology."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:Temperature
+    a owl:Class ;
+    rdfs:subClassOf clp:Quantity ;
+    skos:prefLabel "Temperature"@en ;
+    skos:definition "An interface class assigned via range inference which maps to an explicitly defined Temperature from the Quantity ontology."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:SeedingRate
+    a owl:Class ;
+    rdfs:subClassOf clp:Quantity ;
+    skos:prefLabel "SeedingRate"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:Velocity
+    a owl:Class ;
+    rdfs:subClassOf clp:Quantity ;
+    skos:prefLabel "Velocity"@en ;
+    skos:definition "An interface class assigned via range inference which maps to an explicitly defined Velocity from the Quantity ontology."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+############## Labels ##############
+
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:Application ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:ApplicationSequence ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:ApplicationTargetSite ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:ApplicationMethod ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TreatmentWindow ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:NozzleClass ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:BufferZoneType ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TankMixProduct ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:InformationSource ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:SoilType ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.

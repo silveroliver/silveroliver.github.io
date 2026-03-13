@@ -1,0 +1,121 @@
+@prefix cla: <https://data.agriguide.ag/ontologies/agent/> .
+@prefix cli: <https://data.agriguide.ag/ontologies/interval/> .
+@prefix clid: <https://data.agriguide.ag/ontologies/identifier/> .
+@prefix clq: <https://data.agriguide.ag/ontologies/quantity/> .
+@prefix clp: <https://data.agriguide.ag/ontologies/product/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+
+clp:
+    a owl:Ontology ;
+    dcterms:title "AgriGuide - Product Domain Model - Storage, transport and disposal"@en ;
+    dcterms:created "2022-11-14"^^xsd:date ;
+    dcterms:modified "2026-03-12"^^xsd:date ;
+    dc:publisher "Croplife Europe" ;
+    dcterms:description """This Product Ontology encodes the Croplife EU Digital Product Label information model. It is designed to provide a structural backbone which complies with EU Commission Regulation 547/2011, that provides fully structured - and therefore
+        machine-readable - data regarding product usage information, and that can be extended by users to encode additional regulatory 
+        requirements at a national or territory level. Where possible, references to the relevant legislation are included in the 
+        class and property documentation.
+    """@en ;
+    rdfs:comment "<p><i><b>The following diagram is manually maintained and indicative only (with no guarantee of formal accuracy): please see the schemas and text documentation for the formal specification</b></i></p><img src='./../img/product.png' style='width:100%;margin-top:25px'>"@en ;
+    owl:versionInfo "1.1"^^xsd:string ;
+    vann:preferredNamespaceUri "https://data.agriguide.ag/ontologies/product/" ;
+    vann:preferredNamespacePrefix "clp" ;
+    dcterms:rights "(c) Croplife Europe"@en  .
+
+
+############## Classes ##############
+
+
+
+############## Object Properties ##############
+
+
+clp:storageTemperature
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:Temperature ;
+    skos:prefLabel "storageTemperature"@en ;
+    rdfs:definition "The temperature range under which the product can be safely stored"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:transportationTemperature
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:Temperature ;
+    skos:prefLabel "transportationTemperature"@en ;
+    rdfs:definition "The temperature range under which the product can be safely transported"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+############## Data Properties ##############
+
+
+clp:directionsForStorage
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "directionsForStorage"@en ;
+    rdfs:definition "Guidance on how the product should be stored"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:directionsForDisposal
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "directionsForDisposal"@en ;
+    rdfs:definition "Guidance concerning the safe disposal of the product"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+clp:storageClassificationCode
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "storageClassificationCode"@en ;
+    rdfs:definition "The storage classification code for the formulation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:directionsForTransport
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "directionsForTransport"@en ;
+    rdfs:definition "Distribution guidance relating to the transportation of the product"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+############## Interface Classes ##############
+
+clp:RegisteredFormulation
+    a owl:Class ;
+    skos:prefLabel "RegisteredFormulation"@en ;
+    skos:definition "A crop protection product formulation that has been registered in a country or region"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:Temperature
+    a owl:Class ;
+    rdfs:subClassOf clp:Quantity ;
+    skos:prefLabel "Temperature"@en ;
+    skos:definition "An interface class assigned via range inference which maps to an explicitly defined Temperature from the Quantity ontology."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+############## Labels ##############
+
+
