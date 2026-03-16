@@ -1,0 +1,293 @@
+@prefix cla: <https://data.agriguide.ag/ontologies/agent/> .
+@prefix cli: <https://data.agriguide.ag/ontologies/interval/> .
+@prefix clid: <https://data.agriguide.ag/ontologies/identifier/> .
+@prefix clq: <https://data.agriguide.ag/ontologies/quantity/> .
+@prefix clp: <https://data.agriguide.ag/ontologies/product/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+
+clp:
+    a owl:Ontology ;
+    dcterms:title "AgriGuide - Product Domain Model - packaging"@en ;
+    dcterms:created "2022-11-14"^^xsd:date ;
+    dcterms:modified "2026-03-12"^^xsd:date ;
+    dc:publisher "Croplife Europe" ;
+    dcterms:description """This Product Ontology encodes the Croplife EU Digital Product Label information model. It is designed to provide a structural backbone which complies with EU Commission Regulation 547/2011, that provides fully structured - and therefore
+        machine-readable - data regarding product usage information, and that can be extended by users to encode additional regulatory 
+        requirements at a national or territory level. Where possible, references to the relevant legislation are included in the 
+        class and property documentation.
+    """@en ;
+    rdfs:comment "<p><i><b>The following diagram is manually maintained and indicative only (with no guarantee of formal accuracy): please see the schemas and text documentation for the formal specification</b></i></p><img src='./../img/product.png' style='width:100%;margin-top:25px'>"@en ;
+    owl:versionInfo "1.1"^^xsd:string ;
+    vann:preferredNamespaceUri "https://data.agriguide.ag/ontologies/product/" ;
+    vann:preferredNamespacePrefix "clp" ;
+    dcterms:rights "(c) Croplife Europe"@en  .
+
+
+############## Classes ##############
+
+
+clp:ProductPackage
+    a owl:Class ;
+    skos:prefLabel "ProductPackage"@en ;
+    skos:definition "The production and packing information for the packaged product"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:PackageType
+    a owl:Class ;
+    skos:prefLabel "PackageType"@en ;
+    skos:definition "The type of product package, i.e. item, co-pack, box of items, pallet"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:PackagingMaterial
+    a owl:Class ;
+    skos:prefLabel "PackagingMaterial"@en ;
+    skos:definition "The material plus associated code from which the packaging is made"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:PackagingDisposalOrganisation
+    a owl:Class ;
+    skos:prefLabel "PackagingDisposalOrganisation"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+############## Object Properties ##############
+
+
+clp:packagingDisposalOrganisations
+    a owl:ObjectProperty ;
+    rdfs:domain clp:Country ;
+    rdfs:range clp:PackagingDisposalOrganisation ;
+    skos:prefLabel "packagingDisposalOrganisations"@en ;
+    rdfs:definition "The official organisations responsible for packaging disposal in the country"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:country
+    a owl:ObjectProperty ;
+    rdfs:domain clp:PackagingDisposalOrganisation ;
+    rdfs:range clp:Country ;
+    skos:prefLabel "country"@en ;
+    rdfs:definition "The country in which the specified organisations have packaging disposal responsibility"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:country
+    a owl:ObjectProperty ;
+    rdfs:domain clp:PackagingDisposalOrganisation ;
+    rdfs:range clp:Country ;
+    skos:prefLabel "country"@en ;
+    rdfs:definition "The country in which the specified organisations have packaging disposal responsibility"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:packagingDisposalOrganisations
+    a owl:ObjectProperty ;
+    rdfs:domain clp:PackagingDisposalOrganisation ;
+    rdfs:range clp:Agent ;
+    skos:prefLabel "packagingDisposalOrganisations"@en ;
+    rdfs:definition "The organisations responsible for packaging disposal"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:packagingMaterials
+    a owl:ObjectProperty ;
+    rdfs:domain clp:PackagingDisposalOrganisation ;
+    rdfs:range clp:PackagingMaterial ;
+    skos:prefLabel "packagingMaterials"@en ;
+    rdfs:definition "The list of materials for which the organisation/s have responsibility - only to be completed if different disposal organisations are responsible for different materials"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:labelProviders
+    a owl:ObjectProperty ;
+    rdfs:domain clp:PackagingDisposalOrganisation ;
+    rdfs:range clp:Agent ;
+    skos:prefLabel "labelProviders"@en ;
+    rdfs:definition "The list of label providers which use the packaging disposal organisation/s - only to be completed if not used by all providers"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:productActionTypes
+    a owl:ObjectProperty ;
+    rdfs:domain clp:PackagingDisposalOrganisation ;
+    rdfs:range clp:ProductActionType ;
+    skos:prefLabel "productActionTypes"@en ;
+    rdfs:definition "The list of product action types for which the packaging disposal organisation/s apply - only to be completed if not applicable to all product action types"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+############## Data Properties ##############
+
+
+clp:packagingMaterialLabel
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:PackagingMaterial ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "packagingMaterialLabel"@en ;
+    rdfs:definition "The material out of which the package or container has been fabricated"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:packagingMaterialCode
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:PackagingMaterial ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "packagingMaterialCode"@en ;
+    rdfs:definition "The code for material out of which the package or container has been fabricated"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:formulation
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ProductPackage ;
+    rdfs:range clp:RegisteredFormulation ;
+    skos:prefLabel "formulation"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:size
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ProductPackage ;
+    rdfs:range clp:Quantity ;
+    skos:prefLabel "size"@en ;
+    rdfs:definition "The size of the product package, typically specified by mass or volume"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:packageType
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ProductPackage ;
+    rdfs:range clp:PackageType ;
+    skos:prefLabel "packageType"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:contains
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ProductPackage ;
+    rdfs:range clp:ProductPackage ;
+    skos:prefLabel "contains"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:packagingMaterial
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ProductPackage ;
+    rdfs:range clp:PackagingMaterial ;
+    skos:prefLabel "packagingMaterial"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:netContent
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ProductPackage ;
+    rdfs:range clp:Quantity ;
+    skos:prefLabel "netContent"@en ;
+    rdfs:definition "The net contents of the product package"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:gtin
+    a owl:ObjectProperty ;
+    rdfs:domain clp:ProductPackage ;
+    rdfs:range clp:Identifier ;
+    skos:prefLabel "gtin"@en ;
+    rdfs:definition "The Global Trade Item Number for the saleable package"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:productPackage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:ProductPackage ;
+    skos:prefLabel "productPackage"@en ;
+    rdfs:definition "The product package information"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:packshotImage
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:ProductPackage ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "packshotImage"@en ;
+    rdfs:definition "An image in the packshot, for use in product checks by the grower"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:designedForReuseByAuthorisationHolder
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:ProductPackage ;
+    rdfs:range clp:xsd:boolean ;
+    skos:prefLabel "designedForReuseByAuthorisationHolder"@en ;
+    rdfs:definition "Flags whether or not the packaging has been authorised for reuse by the manufacturer"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:packageDisposalStatement
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:ProductPackage ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "packageDisposalStatement"@en ;
+    rdfs:definition "Any package disposal guidance which applies to a specific packaging format rather than the overall product"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+############## Interface Classes ##############
+
+
+clp:RegisteredFormulation
+    a owl:Class ;
+    skos:prefLabel "RegisteredFormulation"@en ;
+    skos:definition "A crop protection product formulation that has been registered in a country or region"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:ProductActionType
+    a owl:Class ;
+    skos:prefLabel "ProductActionType"@en ;
+    skos:definition "The type of the product"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:Agent
+    a owl:Class ;
+    skos:prefLabel "Agent"@en ;
+    skos:definition "A person or organisation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+############## Labels ##############
+
+
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:PackageType ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.

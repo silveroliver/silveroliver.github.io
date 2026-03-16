@@ -1,0 +1,765 @@
+@prefix cla: <https://data.agriguide.ag/ontologies/agent/> .
+@prefix cli: <https://data.agriguide.ag/ontologies/interval/> .
+@prefix clid: <https://data.agriguide.ag/ontologies/identifier/> .
+@prefix clq: <https://data.agriguide.ag/ontologies/quantity/> .
+@prefix clp: <https://data.agriguide.ag/ontologies/product/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+
+clp:
+    a owl:Ontology ;
+    dcterms:title "AgriGuide - Product Domain Model - targets"@en ;
+    dcterms:created "2022-11-14"^^xsd:date ;
+    dcterms:modified "2026-03-12"^^xsd:date ;
+    dc:publisher "Croplife Europe" ;
+    dcterms:description """This Product Ontology encodes the Croplife EU Digital Product Label information model. It is designed to provide a structural backbone which complies with EU Commission Regulation 547/2011, that provides fully structured - and therefore
+        machine-readable - data regarding product usage information, and that can be extended by users to encode additional regulatory 
+        requirements at a national or territory level. Where possible, references to the relevant legislation are included in the 
+        class and property documentation.
+    """@en ;
+    rdfs:comment "<p><i><b>The following diagram is manually maintained and indicative only (with no guarantee of formal accuracy): please see the schemas and text documentation for the formal specification</b></i></p><img src='./../img/product.png' style='width:100%;margin-top:25px'>"@en ;
+    owl:versionInfo "1.1"^^xsd:string ;
+    vann:preferredNamespaceUri "https://data.agriguide.ag/ontologies/product/" ;
+    vann:preferredNamespacePrefix "clp" ;
+    dcterms:rights "(c) Croplife Europe"@en  .
+
+
+
+############## Classes ##############
+
+
+clp:CropCommodity
+    a owl:Class ;
+    skos:prefLabel "CropCommodity"@en ;
+    skos:definition "A crop commodity"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:CropOutcome
+    a owl:Class ;
+    skos:prefLabel "CropOutcome"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:GrowthLocation
+    a owl:Class ;
+    skos:prefLabel "GrowthLocation"@en ;
+    skos:definition "The setting in which a crop is grown (e.g. indoor, polytunnel, field)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:LandUseTarget
+    a owl:Class ;
+    rdfs:subClassOf clp:Target ;
+    skos:prefLabel "LandUseTarget"@en ;
+    skos:definition "A non-arable land use target (e.g. for golf courses, railway embankments)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:LandUseType
+    a owl:Class ;
+    skos:prefLabel "LandUseType"@en ;
+    skos:definition "The type of non-arable land use"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:LifecycleEvent
+    a owl:Class ;
+    skos:prefLabel "LifecycleEvent"@en ;
+    skos:definition "A crop, pest or agronomic lifecycle event."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:LifecycleStage
+    a owl:Class ;
+    skos:prefLabel "LifecycleStage"@en ;
+    skos:definition "A crop, pest or agronomic lifecycle stage."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:Organism
+    a owl:Class ;
+    skos:prefLabel "Organism"@en ;
+    skos:definition "An interface class assigned via range inference which maps to an explicitly defined Organism from the Product ontology."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:Target
+    a owl:Class ;
+    skos:prefLabel "Target"@en ;
+    skos:definition "The target crops and pests of a direction for use"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:TargetCrop
+    a owl:Class ;
+    skos:prefLabel "TargetCrop"@en ;
+    skos:definition "A crop description, specified in terms of the crop organism plus optionally growth stages and/or commodity"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:TargetPest
+    a owl:Class ;
+    skos:prefLabel "TargetPest"@en ;
+    skos:definition "A pest description, optionally specified in terms of development stages"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:AgriculturalTarget
+    a owl:Class ;
+    rdfs:subClassOf clp:Target ;
+    skos:prefLabel "AgriculturalTarget"@en ;
+    skos:definition "The target crops and pests of a direction for use. Within a defined arable target, all listed pests should be relevant to all listed crops. Additional target entities should be used to encode other groupings of crops and pests."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+### clp:CropRelation
+###    a owl:Class ;
+###    skos:prefLabel "CropRelation"@en ;
+###    skos:definition "A type of crop relation: i.e. target, adjacent or successional"@en ;
+###    rdfs:isDefinedBy clp:
+###.
+
+
+
+clp:CropLifecycleEvent
+    a owl:Class ;
+    rdfs:subClassOf clp:LifecycleEvent ;
+    skos:prefLabel "CropLifecycleEvent"@en ;
+    skos:definition "A crop lifecycle event."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:GeneralLifecycleEvent
+    a owl:Class ;
+    rdfs:subClassOf clp:LifecycleEvent ;
+    skos:prefLabel "GeneralLifecycleEvent"@en ;
+    skos:definition "A general agronomic lifecycle event."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:InsectLifecycleEvent
+    a owl:Class ;
+    rdfs:subClassOf clp:LifecycleEvent ;
+    skos:prefLabel "InsectLifecycleEvent"@en ;
+    skos:definition "An insect lifecycle event."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:WeedLifecycleEvent
+    a owl:Class ;
+    rdfs:subClassOf clp:LifecycleEvent ;
+    skos:prefLabel "WeedLifecycleEvent"@en ;
+    skos:definition "A weed lifecycle event."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:FungalLifecycleEvent
+    a owl:Class ;
+    rdfs:subClassOf clp:LifecycleEvent ;
+    skos:prefLabel "FungalLifecycleEvent"@en ;
+    skos:definition "A fungal lifecycle event."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:PlantLifecycleStage
+    a owl:Class ;
+    rdfs:subClassOf clp:LifecycleStage ;
+    skos:prefLabel "PlantLifecycleStage"@en ;
+    skos:definition "A crop lifecycle stage."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:PestLifecycleStage
+    a owl:Class ;
+    rdfs:subClassOf clp:LifecycleStage ;
+    skos:prefLabel "PestLifecycleStage"@en ;
+    skos:definition "A pest lifecycle stage."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:FungalLifecycleStage
+    a owl:Class ;
+    rdfs:subClassOf clp:LifecycleStage ;
+    skos:prefLabel "FungalLifecycleStage"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:GeneralLifecycleStage
+    a owl:Class ;
+    rdfs:subClassOf clp:LifecycleStage ;
+    skos:prefLabel "GeneralLifecycleStage"@en ;
+    skos:definition "A general agronomic lifecycle stage."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:TargetFungus
+    a owl:Class ;
+    rdfs:subClassOf clp:TargetPest ;
+    skos:prefLabel "TargetFungus"@en ;
+    skos:definition "The target fungus description"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:TargetInsect
+    a owl:Class ;
+    rdfs:subClassOf clp:TargetPest ;
+    skos:prefLabel "TargetInsect"@en ;
+    skos:definition "The target insect description, optionally specified in terms of its lifecycle stage"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:TargetWeed
+    a owl:Class ;
+    rdfs:subClassOf clp:TargetPest ;
+    skos:prefLabel "TargetWeed"@en ;
+    skos:definition "The target weed description, optionally specified in terms of growth stages"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:GrowthStage
+    a owl:Class ;
+    skos:prefLabel "GrowthStage"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:GrowthStageScale
+    a owl:Class ;
+    skos:prefLabel "GrowthStageScale"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:GrowthStageDescription
+    a owl:Class ;
+    skos:prefLabel "GrowthStageDescription"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:BiologicalClassification
+    a owl:Class ;
+    skos:prefLabel "BiologicalClassification"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:TargetMollusc
+    a owl:Class ;
+    rdfs:subClassOf clp:TargetPest ;
+    skos:prefLabel "TargetMollusc"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:TargetNematode
+    a owl:Class ;
+    rdfs:subClassOf clp:TargetPest ;
+    skos:prefLabel "TargetNematode"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+
+############## Object Properties ##############
+
+
+
+
+clp:targetPest
+    a owl:ObjectProperty ;
+    rdfs:domain clp:LandUseTarget ;
+    rdfs:range clp:TargetPest ;
+    skos:prefLabel "targetPest"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:landUseType
+    a owl:ObjectProperty ;
+    rdfs:domain clp:LandUseTarget ;
+    rdfs:range clp:LandUseType ;
+    skos:prefLabel "landUseType"@en ;
+    rdfs:definition "The type of non-arable land use"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+clp:growthStage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetCrop ;
+    rdfs:range clp:GrowthStage ;
+    skos:prefLabel "growthStage"@en ;
+    rdfs:definition "The BBCH growth stage of the crop"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:crop
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetCrop ;
+    rdfs:range clp:Organism ;
+    skos:prefLabel "crop"@en ;
+    rdfs:definition "The plant species or species group to which the target applies"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:minGrowthStage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetCrop ;
+    rdfs:range clp:GrowthStage ;
+    skos:prefLabel "minGrowthStage"@en ;
+    rdfs:definition "The minimum BBCH growth stage of the crop, where expressed as a range"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:maxGrowthStage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetCrop ;
+    rdfs:range clp:GrowthStage ;
+    skos:prefLabel "maxGrowthStage"@en ;
+    rdfs:definition "The maximum BBCH growth stage of the crop, where expressed as a range"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:cultivationSetting
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetCrop ;
+    rdfs:range clp:GrowthLocation ;
+    skos:prefLabel "cultivationSetting"@en ;
+    rdfs:definition "The setting or location in which the crop is grown (e.g. indoor, field, polytunnel)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:commodity
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetCrop ;
+    rdfs:range clp:CropCommodity ;
+    skos:prefLabel "commodity"@en ;
+    rdfs:definition "The intended commodity for which the crop will be used"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:targetCropHeight
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetCrop ;
+    rdfs:range clp:Distance ;
+    skos:prefLabel "targetCropHeight"@en ;
+    rdfs:definition "The height or height range of the target crop to which the application guidance applies"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:targetCropOutcome
+    a owl:ObjectProperty ;
+    rdfs:domain clp:AgriculturalTarget ;
+    rdfs:range clp:CropOutcome ;
+    skos:prefLabel "targetCropOutcome"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:targetPest
+    a owl:ObjectProperty ;
+    rdfs:domain clp:AgriculturalTarget ;
+    rdfs:range clp:TargetPest ;
+    skos:prefLabel "targetPest"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:targetCrop
+    a owl:ObjectProperty ;
+    rdfs:domain clp:AgriculturalTarget ;
+    rdfs:range clp:TargetCrop ;
+    skos:prefLabel "targetCrop"@en ;
+    rdfs:definition "The target crops for a direction for use"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:fungus
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetFungus ;
+    rdfs:range clp:Organism ;
+    skos:prefLabel "fungus"@en ;
+    rdfs:definition "The fungus species or species group to which the target applies"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:fungalLifecyclestage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetFungus ;
+    rdfs:range clp:FungalLifecycleStage ;
+    skos:prefLabel "fungalLifecyclestage"@en ;
+    rdfs:definition "The life cycle stage of the fungus, if applicable"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:insect
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetInsect ;
+    rdfs:range clp:Organism ;
+    skos:prefLabel "insect"@en ;
+    rdfs:definition "The insect species or species group to which the target applies"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:insectLifecycleStage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetInsect ;
+    rdfs:range clp:PestLifecycleStage ;
+    skos:prefLabel "insectLifecycleStage"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:weed
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetWeed ;
+    rdfs:range clp:Organism ;
+    skos:prefLabel "weed"@en ;
+    rdfs:definition "The weed species or species group to which the target applies"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:weedGrowthStage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetWeed ;
+    rdfs:range clp:GrowthStage ;
+    skos:prefLabel "weedGrowthStage"@en ;
+    rdfs:definition "The growth stage of the target weed"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:minWeedGrowthStage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetWeed ;
+    rdfs:range clp:GrowthStage ;
+    skos:prefLabel "minWeedGrowthStage"@en ;
+    rdfs:definition "The minimum growth stage of the target weed"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:maxWeedGrowthStage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetWeed ;
+    rdfs:range clp:GrowthStage ;
+    skos:prefLabel "maxWeedGrowthStage"@en ;
+    rdfs:definition "The maximum growth stage of the target weed"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:targetWeedHeight
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetWeed ;
+    rdfs:range clp:Distance ;
+    skos:prefLabel "targetWeedHeight"@en ;
+    rdfs:definition "The height or height range of the target weed for which the application guidance applies"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:weedLifecyclestage
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetWeed ;
+    rdfs:range clp:PlantLifecycleStage ;
+    skos:prefLabel "weedLifecyclestage"@en ;
+    rdfs:definition "The life cycle stage of the weed, if applicable"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:mollusc
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetMollusc ;
+    rdfs:range clp:Organism ;
+    skos:prefLabel "mollusc"@en ;
+    rdfs:definition "The mollusc against which the crop is being protected"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:nematode
+    a owl:ObjectProperty ;
+    rdfs:domain clp:TargetNematode ;
+    rdfs:range clp:Organism ;
+    skos:prefLabel "nematode"@en ;
+    rdfs:definition "The nematode against which the crop is being protected"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+############## Datatype Properties ##############
+
+
+
+clp:isMinorTarget
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:LandUseTarget ;
+    rdfs:range clp:xsd:boolean ;
+    skos:prefLabel "isMinorTarget"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:treatmentReason
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:LandUseTarget ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "treatmentReason"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:LandUseType ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+clp:cropLabelText
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TargetCrop ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "cropLabelText"@en ;
+    rdfs:definition "The name of the crop exactly as it appears on the label"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:cropGrowthStageDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TargetCrop ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "cropGrowthStageDescription"@en ;
+    rdfs:definition "Alternative description of the crop growth stage to be displayed if BBCH description is not satisfactory"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:isMinorTarget
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:AgriculturalTarget ;
+    rdfs:range clp:xsd:boolean ;
+    skos:prefLabel "isMinorTarget"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:treatmentReason
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:AgriculturalTarget ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "treatmentReason"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:ploughedPriorToSowingPlanting
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:CropLifecycleEvent ;
+    rdfs:range clp:xsd:boolean ;
+    skos:prefLabel "ploughedPriorToSowingPlanting"@en ;
+    rdfs:definition "Flags whether the ground was ploughed prior to the crop being sown or planted out"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:growthStageDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:CropLifecycleEvent ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "growthStageDescription"@en ;
+    rdfs:definition "Alternative description of the crop growth stage to be displayed if BBCH description is not satisfactory"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:weedGrowthStageDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:WeedLifecycleEvent ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "weedGrowthStageDescription"@en ;
+    rdfs:definition "Alternative description of the weed growth stage to be displayed if BBCH description is not satisfactory"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:infectionSite
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TargetFungus ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "infectionSite"@en ;
+    rdfs:definition "Site of the fungal infection on the host crop"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:organismLabelText
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TargetFungus ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "organismLabelText"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:pestSite
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TargetInsect ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "pestSite"@en ;
+    rdfs:definition "Site of the insects on the host crop"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:organismLabelText
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TargetInsect ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "organismLabelText"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:organismLabelText
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TargetWeed ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "organismLabelText"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:weedGrowthStageDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TargetWeed ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "weedGrowthStageDescription"@en ;
+    rdfs:definition "Alternative description of the weed growth stage to be displayed if BBCH description is not satisfactory"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:sensitivityLevel
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TargetWeed ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "sensitivityLevel"@en ;
+    rdfs:definition "A description of the sensitivity of the target weed to the product."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:GrowthStage ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:code
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:GrowthStage ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "code"@en ;
+    rdfs:definition "The code of the growth stage"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:generalDescription
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:GrowthStage ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "generalDescription"@en ;
+    rdfs:definition "The description/s of the growth stage according to the general classification (not specific to crop group)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:GrowthStageScale ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:description
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:GrowthStageDescription ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "description"@en ;
+    rdfs:definition "The description of the growth stage"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:BiologicalClassification ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:notes
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TargetMollusc ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "notes"@en ;
+    rdfs:definition "Any additional notes relating to the target mollusc, e.g. lifecycle phase or density"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:molluscLabelText
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TargetMollusc ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "molluscLabelText"@en ;
+    rdfs:definition "The name of the mollusc as it appears on the label if different to ref data"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:notes
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TargetNematode ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "notes"@en ;
+    rdfs:definition "Any additional notes relating to the target nematode, e.g. lifecycle phase or density"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:nematodeLabelText
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:TargetNematode ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "nematodeLabelText"@en ;
+    rdfs:definition "The name of the nematode as it appears on the label if different to ref data"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+############## Interface Classes ##############
+
+

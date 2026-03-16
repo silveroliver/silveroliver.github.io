@@ -1,0 +1,253 @@
+@prefix cla: <https://data.agriguide.ag/ontologies/agent/> .
+@prefix cli: <https://data.agriguide.ag/ontologies/interval/> .
+@prefix clid: <https://data.agriguide.ag/ontologies/identifier/> .
+@prefix clq: <https://data.agriguide.ag/ontologies/quantity/> .
+@prefix clp: <https://data.agriguide.ag/ontologies/product/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+
+clp:
+    a owl:Ontology ;
+    dcterms:title "AgriGuide - Product Domain Model - Safety"@en ;
+    dcterms:created "2022-11-14"^^xsd:date ;
+    dcterms:modified "2026-03-12"^^xsd:date ;
+    dc:publisher "Croplife Europe" ;
+    dcterms:description """This Product Ontology encodes the Croplife EU Digital Product Label information model. It is designed to provide a structural backbone which complies with EU Commission Regulation 547/2011, that provides fully structured - and therefore
+        machine-readable - data regarding product usage information, and that can be extended by users to encode additional regulatory 
+        requirements at a national or territory level. Where possible, references to the relevant legislation are included in the 
+        class and property documentation.
+    """@en ;
+    rdfs:comment "<p><i><b>The following diagram is manually maintained and indicative only (with no guarantee of formal accuracy): please see the schemas and text documentation for the formal specification</b></i></p><img src='./../img/product.png' style='width:100%;margin-top:25px'>"@en ;
+    owl:versionInfo "1.1"^^xsd:string ;
+    vann:preferredNamespaceUri "https://data.agriguide.ag/ontologies/product/" ;
+    vann:preferredNamespacePrefix "clp" ;
+    dcterms:rights "(c) Croplife Europe"@en  .
+
+
+############## Classes ##############
+
+
+
+clp:SafetyInformation
+    a owl:Class ;
+    skos:prefLabel "SafetyInformation"@en ;
+    skos:definition "The safety information for the registered formulation, including precautions, first aid measures and clinical emergency guidance"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:ClinicalMeasure
+    a owl:Class ;
+    skos:prefLabel "ClinicalMeasure"@en ;
+    skos:definition "First aid information or clinical healthcare guidance"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:SafetyIntervalType
+    a owl:Class ;
+    skos:prefLabel "SafetyIntervalType"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:SafetyInterval
+    a owl:Class ;
+    rdfs:subClassOf clp:Interval ;
+    skos:prefLabel "SafetyInterval"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+############## Object Properties ##############
+
+
+clp:safetyInformation
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:SafetyInformation ;
+    skos:prefLabel "safetyInformation"@en ;
+    rdfs:definition "The safety information including precautions and medical information related to the safe use of the registered formulation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+
+clp:clinicalMeasures
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SafetyInformation ;
+    rdfs:range clp:ClinicalMeasure ;
+    skos:prefLabel "clinicalMeasures"@en ;
+    rdfs:definition "Other relevant clinical intervention safety information"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:safetyInterval
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SafetyInformation ;
+    rdfs:range clp:Interval ;
+    skos:prefLabel "safetyInterval"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:firstAidMeasures
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SafetyInformation ;
+    rdfs:range clp:ClinicalMeasure ;
+    skos:prefLabel "firstAidMeasures"@en ;
+    rdfs:definition "First aid information."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:ufiNo
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SafetyInformation ;
+    rdfs:range clp:Identifier ;
+    skos:prefLabel "ufiNo"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:clinicalSupportOrganisation
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SafetyInformation ;
+    rdfs:range clp:Agent ;
+    skos:prefLabel "clinicalSupportOrganisation"@en ;
+    rdfs:definition "Organisation and phone number to contact for specialist toxicology clinical support information"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:clinicalEmergencyOrganisation
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SafetyInformation ;
+    rdfs:range clp:Agent ;
+    skos:prefLabel "clinicalEmergencyOrganisation"@en ;
+    rdfs:definition "The organisation/s to be contacted in case of clinical emergency"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:environmentalEmergencyOrganisation
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SafetyInformation ;
+    rdfs:range clp:Agent ;
+    skos:prefLabel "environmentalEmergencyOrganisation"@en ;
+    rdfs:definition "The organisation/s to be contacted in case of environmental emergency"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:safetyIntervalType
+    a owl:ObjectProperty ;
+    rdfs:domain clp:SafetyInterval ;
+    rdfs:range clp:SafetyIntervalType ;
+    skos:prefLabel "safetyIntervalType"@en ;
+    rdfs:definition "The type of safety interval"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+############## Data Properties ##############
+
+
+clp:firefightingMeasures
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:SafetyInformation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "firefightingMeasures"@en ;
+    rdfs:definition "Fire fighting and safety measures"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:accidentalReleaseMeasures
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:SafetyInformation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "accidentalReleaseMeasures"@en ;
+    rdfs:definition "Instructions in the case of accidental release of the product into the environment"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:safetyDatasheetLink
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:SafetyInformation ;
+    rdfs:range clp:xsd:string ;
+    skos:prefLabel "safetyDatasheetLink"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:safetyIntervalQualifier
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:SafetyInterval ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "safetyIntervalQualifier"@en ;
+    rdfs:definition "Any free text conditional qualifier information which applies to the safety interval"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+############## Interface Classes ##############
+
+
+
+clp:SubjectAtRisk
+    a owl:Class ;
+    skos:prefLabel "SubjectAtRisk"@en ;
+    skos:definition "The subject at risk in a hazard statement or precaution (i.e. equipment operator, water course, environment, etc)"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:RegisteredFormulation
+    a owl:Class ;
+    skos:prefLabel "RegisteredFormulation"@en ;
+    skos:definition "A crop protection product formulation that has been registered in a country or region"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:Agent
+    a owl:Class ;
+    skos:prefLabel "Agent"@en ;
+    skos:definition "A person or organisation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:Identifier
+    a owl:Class ;
+    skos:prefLabel "Identifier"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:Interval
+    a owl:Class ;
+    skos:prefLabel "Interval"@en ;
+    skos:definition "An interval of time relative to a crop, pest or agronomic lifecycle event."@en ;
+    rdfs:isDefinedBy clp:
+.
+
+############## Labels ##############
+
+
+
+clp:label
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:SafetyIntervalType ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "label"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.

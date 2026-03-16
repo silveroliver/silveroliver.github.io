@@ -1,0 +1,234 @@
+@prefix cla: <https://data.agriguide.ag/ontologies/agent/> .
+@prefix cli: <https://data.agriguide.ag/ontologies/interval/> .
+@prefix clid: <https://data.agriguide.ag/ontologies/identifier/> .
+@prefix clq: <https://data.agriguide.ag/ontologies/quantity/> .
+@prefix clp: <https://data.agriguide.ag/ontologies/product/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+clp:
+    a owl:Ontology ;
+    dcterms:title "AgriGuide - Product Domain Model - Regulatory Authorisation"@en ;
+    dcterms:created "2022-11-14"^^xsd:date ;
+    dcterms:modified "2026-03-12"^^xsd:date ;
+    dc:publisher "Croplife Europe" ;
+    dcterms:description """This Product Ontology encodes the Croplife EU Digital Product Label information model. It is designed to provide a structural backbone which complies with EU Commission Regulation 547/2011, that provides fully structured - and therefore
+        machine-readable - data regarding product usage information, and that can be extended by users to encode additional regulatory 
+        requirements at a national or territory level. Where possible, references to the relevant legislation are included in the 
+        class and property documentation.
+    """@en ;
+    rdfs:comment "<p><i><b>The following diagram is manually maintained and indicative only (with no guarantee of formal accuracy): please see the schemas and text documentation for the formal specification</b></i></p><img src='./../img/product.png' style='width:100%;margin-top:25px'>"@en ;
+    owl:versionInfo "1.1"^^xsd:string ;
+    vann:preferredNamespaceUri "https://data.agriguide.ag/ontologies/product/" ;
+    vann:preferredNamespacePrefix "clp" ;
+    dcterms:rights "(c) Croplife Europe"@en  .
+
+############## Classes ##############
+
+
+
+clp:RegulatoryAuthorisation
+    a owl:Class ;
+    skos:prefLabel "RegulatoryAuthorisation"@en ;
+    skos:definition "The regulatory authorisation of a crop protection product in a country or territory"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+
+############## Object Properties ##############
+
+
+clp:regulatoryAuthorisation
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegisteredFormulation ;
+    rdfs:range clp:RegulatoryAuthorisation ;
+    skos:prefLabel "regulatoryAuthorisation"@en ;
+    rdfs:definition "Regulatory authorisation information for the product"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:regulator
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:Agent ;
+    skos:prefLabel "regulator"@en ;
+    rdfs:definition "The regulatory body which issued the authorisation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:authorisationNumber
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:Identifier ;
+    skos:prefLabel "authorisationNumber"@en ;
+    rdfs:definition "The authorisation number of the registered formulation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:authorisationNoVersionHistory
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:Identifier ;
+    skos:prefLabel "authorisationNoVersionHistory"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:localRepresentative
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:Agent ;
+    skos:prefLabel "localRepresentative"@en ;
+    rdfs:definition "A local legal entity representing the authorisation holder if the authorisation holder is registered in another territory"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:packagingContact
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:Agent ;
+    skos:prefLabel "packagingContact"@en ;
+    rdfs:definition "The contact responsible for product packaging, if different from the authorisation holder. As per EU Directive No 547/2011 Annex 1 section 1b, 'if different, the name and address of the person responsible for the final packaging and labelling or for the final labelling of the plant protection product on the market'"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:labellingContact
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:Agent ;
+    skos:prefLabel "labellingContact"@en ;
+    rdfs:definition "The contact responsible for product labelling, if different from the authorisation holder. As per EU Directive No 547/2011 Annex 1 section 1b, 'if different, the name and address of the person responsible for the final packaging and labelling or for the final labelling of the plant protection product on the market'"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:authorisationHolder
+    a owl:ObjectProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:Agent ;
+    skos:prefLabel "authorisationHolder"@en ;
+    rdfs:definition "The person or organisation authorised to sell the registered formulation. As per EU Directive No 547/2011 Annex 1 section 1b, 'the name and address of the holder of the authorisation'"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+############## Data Properties ##############
+
+
+clp:permittedUse
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "permittedUse"@en ;
+    rdfs:definition "The authorised uses of the product"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:permittedUserCategories
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "permittedUserCategories"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:prohibitedUse
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "prohibitedUse"@en ;
+    rdfs:definition "The restrictions and explicitly prohibited uses of the product or its packaging"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:statutoryContext
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "statutoryContext"@en ;
+    rdfs:definition "The legal statutes or decrees under which the authorisation has been issued"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:validFrom
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:xsd:date ;
+    skos:prefLabel "validFrom"@en ;
+    rdfs:definition "The date from which the formulation authorisation is valid"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:validTo
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:xsd:date ;
+    skos:prefLabel "validTo"@en ;
+    rdfs:definition "The date up until which the formulation authorisation is valid"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:lastAuthorisedSellingDate
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:xsd:date ;
+    skos:prefLabel "lastAuthorisedSellingDate"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:lastAuthorisedUsageDate
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:xsd:date ;
+    skos:prefLabel "lastAuthorisedUsageDate"@en ;
+    rdfs:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
+
+clp:disclaimer
+    a owl:DatatypeProperty ;
+    rdfs:domain clp:RegulatoryAuthorisation ;
+    rdfs:range clp:rdf:langString ;
+    skos:prefLabel "disclaimer"@en ;
+    rdfs:definition "Any disclaimer stated on the label"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+############## Interface Classes ##############
+
+
+clp:RegisteredFormulation
+    a owl:Class ;
+    skos:prefLabel "RegisteredFormulation"@en ;
+    skos:definition "A crop protection product formulation that has been registered in a country or region"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+
+clp:Agent
+    a owl:Class ;
+    skos:prefLabel "Agent"@en ;
+    skos:definition "A person or organisation"@en ;
+    rdfs:isDefinedBy clp:
+.
+
+
+clp:Identifier
+    a owl:Class ;
+    skos:prefLabel "Identifier"@en ;
+    skos:definition ""@en ;
+    rdfs:isDefinedBy clp:
+.
