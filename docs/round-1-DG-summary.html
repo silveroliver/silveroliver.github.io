@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Cup 2026 Sweepstake · Round 1 Dg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d1117;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 32px 16px 64px;
+    color: #fff;
+  }
+
+  /* ---- Page header ---- */
+  .album-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .album-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #FFD700 0%, #FFF8DC 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .album-subtitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-top: 6px;
+  }
+  .album-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 14px auto;
+    max-width: 360px;
+  }
+  .album-divider::before, .album-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #FFD700, transparent);
+  }
+  .album-divider span { color: #FFD700; font-size: 1rem; }
+
+  /* ---- 2-column grid ---- */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ---- Card ---- */
+  .card {
+    background: #161b22;
+    border-radius: 10px;
+    border-left: 4px solid var(--accent);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.05);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.08);
+  }
+
+  /* Card header row */
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px 4px;
+    gap: 8px;
+  }
+  .card-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .rank-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .medal { font-size: 0.9rem; }
+  .person-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #f9fafb;
+    line-height: 1;
+  }
+  .card-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .pts-total {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #f9fafb;
+  }
+  .pts-total small {
+    font-size: 0.6rem;
+    color: #6b7280;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    margin-left: 1px;
+  }
+  .gd-val {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .gd-pos { background: #14532d; color: #4ade80; }
+  .gd-neg { background: #7f1d1d; color: #f87171; }
+
+  /* Title line */
+  .card-title {
+    font-size: 0.7rem;
+    font-style: italic;
+    color: #6b7280;
+    padding: 0 14px 8px;
+    line-height: 1.3;
+  }
+
+  /* Teams body */
+  .card-body {
+    padding: 2px 14px 8px;
+    border-top: 1px solid rgba(255,255,255,.05);
+  }
+  .team-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    font-size: 0.78rem;
+  }
+  .team-row:last-child { border-bottom: none; }
+  .team-flag { font-size: 1rem; flex-shrink: 0; }
+  .team-name {
+    font-weight: 600;
+    color: #e5e7eb;
+    width: 110px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .result-badge {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .result-badge.win  { background: #166534; color: #4ade80; }
+  .result-badge.draw { background: #713f12; color: #fbbf24; }
+  .result-badge.loss { background: #7f1d1d; color: #f87171; }
+  .result-detail {
+    color: #9ca3af;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.74rem;
+  }
+  .grp-badge {
+    font-size: 0.6rem;
+    color: #4b5563;
+    flex-shrink: 0;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .team-pts {
+    font-size: 0.65rem;
+    color: #4b5563;
+    flex-shrink: 0;
+    width: 22px;
+    text-align: right;
+  }
+
+  /* Footer */
+  .card-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 14px 9px;
+    background: #0f1117;
+    border-top: 1px solid rgba(255,255,255,.05);
+    flex-wrap: wrap;
+  }
+  .rec-item {
+    font-size: 0.7rem;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .win-dot  { color: #4ade80; font-weight: 700; }
+  .draw-dot { color: #fbbf24; font-weight: 700; }
+  .loss-dot { color: #f87171; font-weight: 700; }
+  .scorer-row {
+    font-size: 0.7rem;
+    color: #6b7280;
+    margin-left: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60%;
+  }
+
+  /* Look-ahead block */
+  .lookahead {
+    padding: 8px 14px 10px;
+    background: #0c1520;
+    border-top: 1px solid rgba(255,255,255,.07);
+  }
+  .la-header {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+    opacity: .85;
+  }
+  .la-fixture {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #e5e7eb;
+    line-height: 1.2;
+  }
+  .la-meta {
+    font-size: 0.62rem;
+    color: #4b5563;
+    margin: 3px 0 5px;
+  }
+  .la-blurb {
+    font-size: 0.7rem;
+    color: #9ca3af;
+    line-height: 1.45;
+    font-style: italic;
+  }
+
+  /* ---- Overview: league table + talking points ---- */
+  .overview {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto 36px;
+    align-items: start;
+  }
+  .lt-wrap {
+    flex-shrink: 0;
+  }
+  .lt {
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    width: 100%;
+    background: #161b22;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.05);
+  }
+  .lt thead tr {
+    background: #0f1117;
+  }
+  .lt th {
+    padding: 7px 10px;
+    text-align: left;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4b5563;
+  }
+  .lt th:not(:nth-child(2)) { text-align: center; }
+  .lt td {
+    padding: 6px 10px;
+    border-top: 1px solid rgba(255,255,255,.04);
+    color: #d1d5db;
+    text-align: center;
+  }
+  .lt-rank { color: #6b7280; font-size: 0.7rem; text-align: center !important; }
+  .lt-name { text-align: left !important; font-weight: 600; color: #f9fafb; white-space: nowrap; }
+  .lt-pts { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 0.9rem; color: #f9fafb; }
+  .lt tbody tr:hover { background: rgba(255,255,255,.03); }
+  .gd-pill {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 1px 5px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+  .gd-pill.gd-pos { background: #14532d; color: #4ade80; }
+  .gd-pill.gd-neg { background: #7f1d1d; color: #f87171; }
+
+  .summary-wrap {
+    background: #161b22;
+    border-radius: 8px;
+    padding: 14px 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.05);
+  }
+  .summary-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #4b5563;
+    margin-bottom: 10px;
+  }
+  .talking-points {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .talking-points li {
+    font-size: 0.78rem;
+    color: #9ca3af;
+    line-height: 1.5;
+    padding-left: 14px;
+    position: relative;
+  }
+  .talking-points li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: #FFD700;
+    font-weight: 700;
+  }
+
+  @media (max-width: 700px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .team-name { width: 90px; }
+    .overview { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="album-header">
+  <div class="album-title">🏆 World Cup 2026 Sweepstake</div>
+  <div class="album-divider"><span>★</span></div>
+  <div class="album-subtitle">Round 1 Dg</div>
+</header>
+
+
+<div class="overview">
+  <div class="lt-wrap">
+    <table class="lt">
+      <thead>
+        <tr>
+          <th>#</th><th>Name</th><th>W</th><th>D</th><th>L</th><th>Pts</th><th>GD</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="lt-rank">1</td>
+        <td class="lt-name">Mike</td>
+        <td class="lt-w">2</td>
+        <td class="lt-d">2</td>
+        <td class="lt-l">0</td>
+        <td class="lt-pts">8</td>
+        <td class="lt-gd"><span class="gd-pill gd-pos">+5</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">=1</td>
+        <td class="lt-name">Martha</td>
+        <td class="lt-w">2</td>
+        <td class="lt-d">2</td>
+        <td class="lt-l">0</td>
+        <td class="lt-pts">8</td>
+        <td class="lt-gd"><span class="gd-pill gd-pos">+5</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">=1</td>
+        <td class="lt-name">Jane</td>
+        <td class="lt-w">2</td>
+        <td class="lt-d">2</td>
+        <td class="lt-l">0</td>
+        <td class="lt-pts">8</td>
+        <td class="lt-gd"><span class="gd-pill gd-pos">+3</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">4</td>
+        <td class="lt-name">Amanda</td>
+        <td class="lt-w">2</td>
+        <td class="lt-d">1</td>
+        <td class="lt-l">1</td>
+        <td class="lt-pts">7</td>
+        <td class="lt-gd"><span class="gd-pill gd-pos">+4</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">=4</td>
+        <td class="lt-name">John</td>
+        <td class="lt-w">2</td>
+        <td class="lt-d">1</td>
+        <td class="lt-l">1</td>
+        <td class="lt-pts">7</td>
+        <td class="lt-gd"><span class="gd-pill gd-pos">+3</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">=4</td>
+        <td class="lt-name">Anna</td>
+        <td class="lt-w">2</td>
+        <td class="lt-d">1</td>
+        <td class="lt-l">1</td>
+        <td class="lt-pts">7</td>
+        <td class="lt-gd"><span class="gd-pill gd-pos">+1</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">7</td>
+        <td class="lt-name">Tony</td>
+        <td class="lt-w">1</td>
+        <td class="lt-d">3</td>
+        <td class="lt-l">0</td>
+        <td class="lt-pts">6</td>
+        <td class="lt-gd"><span class="gd-pill gd-pos">+6</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">8</td>
+        <td class="lt-name">Ben</td>
+        <td class="lt-w">1</td>
+        <td class="lt-d">1</td>
+        <td class="lt-l">2</td>
+        <td class="lt-pts">4</td>
+        <td class="lt-gd"><span class="gd-pill gd-pos">+1</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">9</td>
+        <td class="lt-name">Helen</td>
+        <td class="lt-w">1</td>
+        <td class="lt-d">0</td>
+        <td class="lt-l">3</td>
+        <td class="lt-pts">3</td>
+        <td class="lt-gd"><span class="gd-pill gd-neg">-5</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">10</td>
+        <td class="lt-name">Danny</td>
+        <td class="lt-w">0</td>
+        <td class="lt-d">2</td>
+        <td class="lt-l">2</td>
+        <td class="lt-pts">2</td>
+        <td class="lt-gd"><span class="gd-pill gd-neg">-8</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">=10</td>
+        <td class="lt-name">Lloyd</td>
+        <td class="lt-w">0</td>
+        <td class="lt-d">2</td>
+        <td class="lt-l">2</td>
+        <td class="lt-pts">2</td>
+        <td class="lt-gd"><span class="gd-pill gd-neg">-3</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">12</td>
+        <td class="lt-name">Silver</td>
+        <td class="lt-w">0</td>
+        <td class="lt-d">1</td>
+        <td class="lt-l">3</td>
+        <td class="lt-pts">1</td>
+        <td class="lt-gd"><span class="gd-pill gd-neg">-6</span></td>
+      </tr></tbody>
+    </table>
+  </div>
+  <div class="summary-wrap">
+    <div class="summary-label">Week in review</div>
+    <ul class="talking-points"><li>THREE-WAY TIE AT THE TOP! Mike, Martha &amp; Jane all on 8 pts — separated only by goal difference</li><li>Tony is the only person with ZERO defeats but his draw-heavy approach leaves him 4th on points</li><li>Amanda had a huge night — England smashed Croatia 4–2 but Panama&#x27;s loss to Ghana cost her the top spot</li><li>Anna quietly brilliant — Ghana&#x27;s 90+5&#x27; winner against Panama was a dagger to Amanda&#x27;s heart and a gift to Anna!</li><li>Silver is in deep trouble — 3 losses and only Uruguay&#x27;s draw keeping them off zero. Needs a miracle from Matchday 2!</li><li>Danny has been on the wrong end of the two biggest thrashings (7-1 and 4-1) — a combined GD of -8 is brutal!</li></ul>
+  </div>
+</div>
+
+<div class="card-grid">
+
+  <div class="card" style="--accent:#C9A227;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#1</span><span class="medal">🥇</span>
+        <div class="person-name">MIKE</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">8<small>pts</small></span>
+        <span class="gd-val gd-pos">GD +5</span>
+      </div>
+    </div>
+    <div class="card-title">"The Messi Masterclass"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🌍</span>
+          <span class="team-name">| Mexico</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp A</span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇦🇷</span>
+          <span class="team-name">Argentina</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp J</span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇯🇵</span>
+          <span class="team-name">Japan</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp F</span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇨🇦</span>
+          <span class="team-name">Canada</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp B</span>
+          <span class="team-pts">1pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>2</span>
+      <span class="rec-item"><span class="draw-dot">D</span>2</span>
+      <span class="rec-item"><span class="loss-dot">L</span>0</span>
+      <span class="scorer-row">⚽ Lionel Messi (Argentina) — 3 goals</span>
+    </div>
+    
+    <div class="lookahead">
+      <div class="la-header">👀 Next up · MD2</div>
+      <div class="la-fixture">Mexico vs Korea Republic</div>
+      <div class="la-meta">Thu 19 Jun, 01:00 UTC  ·  Estadio Guadalajara</div>
+      <div class="la-blurb">A clash of TWO of Mike&#x27;s teams! Both won on Matchday 1 — Mexico beat South Africa 2–0, Korea Republic beat Czech Republic 2–1. One of them is guaranteed to drop points. Mike literally can&#x27;t lose… but he can&#x27;t fully win either. The ultimate sweepstake dilemma!</div>
+    </div>
+  </div>
+
+  <div class="card" style="--accent:#888;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#2</span><span class="medal">🥈</span>
+        <div class="person-name">AMANDA</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">7<small>pts</small></span>
+        <span class="gd-val gd-pos">GD +4</span>
+      </div>
+    </div>
+    <div class="card-title">"The Three Lions Roar"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🌍</span>
+          <span class="team-name">| England</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp L</span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇦🇺</span>
+          <span class="team-name">Australia</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp D</span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇶🇦</span>
+          <span class="team-name">Qatar</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp B</span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇵🇦</span>
+          <span class="team-name">Panama</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp L</span>
+          <span class="team-pts">0pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>2</span>
+      <span class="rec-item"><span class="draw-dot">D</span>1</span>
+      <span class="rec-item"><span class="loss-dot">L</span>1</span>
+      <span class="scorer-row">⚽ Harry Kane (England) — 2 goals (inc. penalty)</span>
+    </div>
+    
+    <div class="lookahead">
+      <div class="la-header">👀 Next up · MD2</div>
+      <div class="la-fixture">United States vs Australia</div>
+      <div class="la-meta">Thu 19 Jun, 19:00 UTC  ·  Estadio Seattle</div>
+      <div class="la-blurb">Another internal sweepstake collision! Amanda&#x27;s Australia beat Türkiye 2–0, and Martha&#x27;s USA thrashed Paraguay 4–1. Both are on 3 points. Amanda has a team on BOTH sides — Australia is hers, but a USA win helps Martha&#x27;s charge. Amanda needs Australia to hold firm against the hosts in front of a raucous Seattle crowd!</div>
+    </div>
+  </div>
+
+  <div class="card" style="--accent:#7B3F00;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#3</span><span class="medal">🥉</span>
+        <div class="person-name">MARTHA</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">8<small>pts</small></span>
+        <span class="gd-val gd-pos">GD +5</span>
+      </div>
+    </div>
+    <div class="card-title">"Les Magnifiques"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🌍</span>
+          <span class="team-name">| United States</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp D</span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇫🇷</span>
+          <span class="team-name">France</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp I</span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇵🇹</span>
+          <span class="team-name">Portugal</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp K</span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇧🇪</span>
+          <span class="team-name">Belgium</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp G</span>
+          <span class="team-pts">1pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>2</span>
+      <span class="rec-item"><span class="draw-dot">D</span>2</span>
+      <span class="rec-item"><span class="loss-dot">L</span>0</span>
+      <span class="scorer-row">⚽ Kylian Mbappé (France) &amp; Folarin Balogun (USA) — 2 goals each</span>
+    </div>
+    
+    <div class="lookahead">
+      <div class="la-header">👀 Next up · MD2</div>
+      <div class="la-fixture">Norway vs France</div>
+      <div class="la-meta">Thu 26 Jun, 19:00 UTC  ·  Estadio Boston</div>
+      <div class="la-blurb">Haaland vs Mbappé. Both won their openers (Norway 4–1, France 3–1). This is a straight fight for top spot in Group I — and it pits Martha&#x27;s France (Mbappé on 2 goals) against Ben&#x27;s Norway (Haaland on 2 goals). A potential Golden Boot decider AND a sweepstake six-pointer between Martha and Ben!</div>
+    </div>
+  </div>
+
+  <div class="card" style="--accent:#1e3a8a;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#4</span>
+        <div class="person-name">JANE</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">8<small>pts</small></span>
+        <span class="gd-val gd-pos">GD +3</span>
+      </div>
+    </div>
+    <div class="card-title">"The Colombian Cartel"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🌍</span>
+          <span class="team-name">| Colombia</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp K</span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇰🇷</span>
+          <span class="team-name">Korea Republic</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp A</span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇧🇦</span>
+          <span class="team-name">Bosnia</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp B</span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇳🇱</span>
+          <span class="team-name">Netherlands</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp F</span>
+          <span class="team-pts">1pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>2</span>
+      <span class="rec-item"><span class="draw-dot">D</span>2</span>
+      <span class="rec-item"><span class="loss-dot">L</span>0</span>
+      <span class="scorer-row">⚽ Goals shared — Muñoz, Díaz, Campaz (Colombia), In-beom Hwang, Hyeon-gyu Oh (Korea) — 1 each</span>
+    </div>
+    
+    <div class="lookahead">
+      <div class="la-header">👀 Next up · MD2</div>
+      <div class="la-fixture">Netherlands vs Sweden</div>
+      <div class="la-meta">Fri 20 Jun, 17:00 UTC  ·  Estadio Houston</div>
+      <div class="la-blurb">Jane&#x27;s Netherlands (drew 2–2 with Japan) face John&#x27;s Sweden (who hammered Tunisia 5–1). Sweden are flying and Netherlands need a result. If Sweden win, John pulls further clear; if Netherlands win, Jane closes the gap. A direct sweepstake head-to-head with Group F top spot on the line!</div>
+    </div>
+  </div>
+
+  <div class="card" style="--accent:#1e3a8a;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#5</span>
+        <div class="person-name">JOHN</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">7<small>pts</small></span>
+        <span class="gd-val gd-pos">GD +3</span>
+      </div>
+    </div>
+    <div class="card-title">"The Battered Shield"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🌍</span>
+          <span class="team-name">| Côte d&#x27;Ivoire</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp E</span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇸🇪</span>
+          <span class="team-name">Sweden</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp F</span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇸🇦</span>
+          <span class="team-name">Saudi Arabia</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp H</span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇭🇷</span>
+          <span class="team-name">Croatia</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp L</span>
+          <span class="team-pts">0pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>2</span>
+      <span class="rec-item"><span class="draw-dot">D</span>1</span>
+      <span class="rec-item"><span class="loss-dot">L</span>1</span>
+      <span class="scorer-row">⚽ Yasin Ayari (Sweden) — 2 goals</span>
+    </div>
+    
+    <div class="lookahead">
+      <div class="la-header">👀 Next up · MD2</div>
+      <div class="la-fixture">Panama vs Croatia</div>
+      <div class="la-meta">Mon 23 Jun, 23:00 UTC  ·  Estadio Toronto</div>
+      <div class="la-blurb">Croatia were battered 4–2 by England on Matchday 1 and are staring at early elimination. This is a MUST-WIN for John&#x27;s Croatia against Amanda&#x27;s Panama. Lose and Modrić&#x27;s World Cup career is over. Win and they&#x27;re right back in it. Desperation football — always entertaining!</div>
+    </div>
+  </div>
+
+  <div class="card" style="--accent:#1e3a8a;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#6</span>
+        <div class="person-name">TONY</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">6<small>pts</small></span>
+        <span class="gd-val gd-pos">GD +6</span>
+      </div>
+    </div>
+    <div class="card-title">"The Unbeaten Heavyweights"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🌍</span>
+          <span class="team-name">| Germany</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp E</span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇮🇷</span>
+          <span class="team-name">Iran</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp G</span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇲🇦</span>
+          <span class="team-name">Morocco</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp C</span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇧🇷</span>
+          <span class="team-name">Brazil</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp C</span>
+          <span class="team-pts">1pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>1</span>
+      <span class="rec-item"><span class="draw-dot">D</span>3</span>
+      <span class="rec-item"><span class="loss-dot">L</span>0</span>
+      <span class="scorer-row">⚽ Kai Havertz (Germany) — 2 goals</span>
+    </div>
+    
+    <div class="lookahead">
+      <div class="la-header">👀 Next up · MD2</div>
+      <div class="la-fixture">Belgium vs Iran</div>
+      <div class="la-meta">Sat 21 Jun, 19:00 UTC  ·  Estadio Los Ángeles</div>
+      <div class="la-blurb">Tony vs Tony! His Belgium (drew 1–1 with Egypt) face his Iran (drew 2–2 with New Zealand) in Group G. Both drew their openers, both need a win to stay in contention. Tony is guaranteed 3 points from this match but also guaranteed a loss. The ultimate &quot;playing yourself&quot; moment!</div>
+    </div>
+  </div>
+
+  <div class="card" style="--accent:#065f46;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#7</span>
+        <div class="person-name">BEN</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">4<small>pts</small></span>
+        <span class="gd-val gd-pos">GD +1</span>
+      </div>
+    </div>
+    <div class="card-title">"The Haaland Express"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🌍</span>
+          <span class="team-name">| Norway</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp I</span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇪🇸</span>
+          <span class="team-name">Spain</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp H</span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇨🇿</span>
+          <span class="team-name">Czech Republic</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp A</span>
+          <span class="team-pts">0pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇪🇨</span>
+          <span class="team-name">Ecuador</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp E</span>
+          <span class="team-pts">0pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>1</span>
+      <span class="rec-item"><span class="draw-dot">D</span>1</span>
+      <span class="rec-item"><span class="loss-dot">L</span>2</span>
+      <span class="scorer-row">⚽ Erling Haaland (Norway) — 2 goals</span>
+    </div>
+    
+    <div class="lookahead">
+      <div class="la-header">👀 Next up · MD2</div>
+      <div class="la-fixture">Uruguay vs Spain</div>
+      <div class="la-meta">Fri 27 Jun, 00:00 UTC  ·  Estadio Guadalajara</div>
+      <div class="la-blurb">Ben&#x27;s Spain drew 0–0 with Cape Verde in a shocker. Now they face Silver&#x27;s Uruguay (who also drew 1–1 with Saudi Arabia). Spain NEED to win to avoid a group-stage crisis — and Ben needs them firing. A Spain loss could see Ben&#x27;s best team eliminated. High stakes in Guadalajara!</div>
+    </div>
+  </div>
+
+  <div class="card" style="--accent:#6d28d9;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#8</span>
+        <div class="person-name">ANNA</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">7<small>pts</small></span>
+        <span class="gd-val gd-pos">GD +1</span>
+      </div>
+    </div>
+    <div class="card-title">"The Giant Killers"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🌍</span>
+          <span class="team-name">| Scotland</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp C</span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇬🇭</span>
+          <span class="team-name">Ghana</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp L</span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇳🇿</span>
+          <span class="team-name">New Zealand</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp G</span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇩🇿</span>
+          <span class="team-name">Algeria</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp J</span>
+          <span class="team-pts">0pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>2</span>
+      <span class="rec-item"><span class="draw-dot">D</span>1</span>
+      <span class="rec-item"><span class="loss-dot">L</span>1</span>
+      <span class="scorer-row">⚽ Elijah Just (New Zealand) — 2 goals</span>
+    </div>
+    
+    <div class="lookahead">
+      <div class="la-header">👀 Next up · MD2</div>
+      <div class="la-fixture">Algeria vs Austria</div>
+      <div class="la-meta">Sat 28 Jun, 02:00 UTC  ·  Estadio Kansas City</div>
+      <div class="la-blurb">Anna&#x27;s Algeria (hammered 3–0 by Argentina) face Helen&#x27;s Austria (who won 3–1 vs Jordan). This is a sweepstake head-to-head AND a Group J survival match. Algeria are desperate; Austria are confident. If Algeria lose, they&#x27;re almost certainly out. Anna needs a miracle comeback performance!</div>
+    </div>
+  </div>
+
+  <div class="card" style="--accent:#92400e;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#9</span>
+        <div class="person-name">HELEN</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">3<small>pts</small></span>
+        <span class="gd-val gd-neg">GD -5</span>
+      </div>
+    </div>
+    <div class="card-title">"The Austrian Redemption"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🌍</span>
+          <span class="team-name">| Austria</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp J</span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇹🇷</span>
+          <span class="team-name">Turkey</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp D</span>
+          <span class="team-pts">0pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇵🇾</span>
+          <span class="team-name">Paraguay</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp D</span>
+          <span class="team-pts">0pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇸🇳</span>
+          <span class="team-name">Senegal</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp I</span>
+          <span class="team-pts">0pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>1</span>
+      <span class="rec-item"><span class="draw-dot">D</span>0</span>
+      <span class="rec-item"><span class="loss-dot">L</span>3</span>
+      <span class="scorer-row">⚽ Goals shared — Schmid, Arnautovic (Austria), Mbaye (Senegal), Mauricio (Paraguay) — 1 each</span>
+    </div>
+    
+    <div class="lookahead">
+      <div class="la-header">👀 Next up · MD2</div>
+      <div class="la-fixture">Türkiye vs Paraguay</div>
+      <div class="la-meta">Fri 20 Jun, 03:00 UTC  ·  Estadio del Área de la Bahía de San Francisco</div>
+      <div class="la-blurb">The &quot;Losers&#x27; Final&quot;! Both of Helen&#x27;s Group D teams lost on Matchday 1 — Türkiye 0–2 to Australia, Paraguay 1–4 to USA. Now they play EACH OTHER. Helen is guaranteed 3 points from this match, but one of her teams will be on the brink of elimination with 2 losses from 2. A bittersweet win either way!</div>
+    </div>
+  </div>
+
+  <div class="card" style="--accent:#7f1d1d;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#10</span>
+        <div class="person-name">LLOYD</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">2<small>pts</small></span>
+        <span class="gd-val gd-neg">GD -3</span>
+      </div>
+    </div>
+    <div class="card-title">"The Stubborn Underdogs"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🌍</span>
+          <span class="team-name">| Congo DR</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp K</span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇨🇭</span>
+          <span class="team-name">Switzerland</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp B</span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇺🇿</span>
+          <span class="team-name">Uzbekistan</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp K</span>
+          <span class="team-pts">0pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇯🇴</span>
+          <span class="team-name">Jordan</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp J</span>
+          <span class="team-pts">0pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>0</span>
+      <span class="rec-item"><span class="draw-dot">D</span>2</span>
+      <span class="rec-item"><span class="loss-dot">L</span>2</span>
+      <span class="scorer-row">⚽ Yoane Wissa (Congo DR), Fayzullaev (Uzbekistan), Olwan (Jordan) — 1 each</span>
+    </div>
+    
+    <div class="lookahead">
+      <div class="la-header">👀 Next up · MD2</div>
+      <div class="la-fixture">Colombia vs Congo DR</div>
+      <div class="la-meta">Mon 23 Jun, 02:00 UTC  ·  Estadio Guadalajara</div>
+      <div class="la-blurb">Lloyd&#x27;s Congo DR held Portugal to a 1–1 draw — the shock of the tournament so far! Now they face Jane&#x27;s Colombia (who won 3–1 vs Uzbekistan). Can Congo DR pull off another upset? Lloyd needs them to keep the dream alive. A win here and Congo DR would be TOP of Group K!</div>
+    </div>
+  </div>
+
+  <div class="card" style="--accent:#4c0519;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#11</span>
+        <div class="person-name">DANNY</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">2<small>pts</small></span>
+        <span class="gd-val gd-neg">GD -8</span>
+      </div>
+    </div>
+    <div class="card-title">"The Whipping Boys"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🌍</span>
+          <span class="team-name">| Cape Verde</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp H</span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇪🇬</span>
+          <span class="team-name">Egypt</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp G</span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇮🇶</span>
+          <span class="team-name">Iraq</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp I</span>
+          <span class="team-pts">0pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇨🇼</span>
+          <span class="team-name">Curacao</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp E</span>
+          <span class="team-pts">0pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>0</span>
+      <span class="rec-item"><span class="draw-dot">D</span>2</span>
+      <span class="rec-item"><span class="loss-dot">L</span>2</span>
+      <span class="scorer-row">⚽ Emam Ashour (Egypt) &amp; Livano Comenencia (Curacao) — 1 each</span>
+    </div>
+    
+    <div class="lookahead">
+      <div class="la-header">👀 Next up · MD2</div>
+      <div class="la-fixture">Senegal vs Iraq</div>
+      <div class="la-meta">Thu 26 Jun, 19:00 UTC  ·  Estadio Toronto</div>
+      <div class="la-blurb">Another internal collision! Danny&#x27;s Iraq (lost 1–4 to Norway) face Helen&#x27;s Senegal (lost 1–3 to France). Both lost their openers — this is a six-pointer between two wounded teams. Danny desperately needs Iraq to get off the mark, but Senegal are the more fancied side. Can Iraq pull off a shock?</div>
+    </div>
+  </div>
+
+  <div class="card" style="--accent:#111;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#12</span>
+        <div class="person-name">SILVER</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">1<small>pts</small></span>
+        <span class="gd-val gd-neg">GD -6</span>
+      </div>
+    </div>
+    <div class="card-title">"The Basement Dwellers"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🌍</span>
+          <span class="team-name">| Uruguay</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp H</span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇿🇦</span>
+          <span class="team-name">South Africa</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp A</span>
+          <span class="team-pts">0pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇭🇹</span>
+          <span class="team-name">Haiti</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp C</span>
+          <span class="team-pts">0pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇹🇳</span>
+          <span class="team-name">Tunisia</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp F</span>
+          <span class="team-pts">0pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>0</span>
+      <span class="rec-item"><span class="draw-dot">D</span>1</span>
+      <span class="rec-item"><span class="loss-dot">L</span>3</span>
+      <span class="scorer-row">⚽ Maxi Araújo (Uruguay) &amp; Omar Rekik (Tunisia) — 1 each</span>
+    </div>
+    
+    <div class="lookahead">
+      <div class="la-header">👀 Next up · MD2</div>
+      <div class="la-fixture">Uruguay vs Spain</div>
+      <div class="la-meta">Fri 27 Jun, 00:00 UTC  ·  Estadio Guadalajara</div>
+      <div class="la-blurb">Silver&#x27;s only point came from Uruguay&#x27;s 1–1 draw with Saudi Arabia. Now they face Ben&#x27;s Spain — who are vulnerable after their 0–0 with Cape Verde. This is Silver&#x27;s best chance of a WIN in the entire tournament. Uruguay have the quality to beat a misfiring Spain. Silver&#x27;s entire sweepstake hopes rest on Suárez &amp; co. delivering in Guadalajara!</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
