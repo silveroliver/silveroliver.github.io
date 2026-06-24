@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Cup 2026 Sweepstake · Matchday 2 · Group Stage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0d1117;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    padding: 32px 16px 64px;
+    color: #fff;
+  }
+
+  /* ---- Page header ---- */
+  .album-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .album-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #FFD700 0%, #FFF8DC 50%, #FFD700 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .album-subtitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(0.8rem, 1.8vw, 1rem);
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #6b7280;
+    margin-top: 6px;
+  }
+  .album-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 14px auto;
+    max-width: 360px;
+  }
+  .album-divider::before, .album-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #FFD700, transparent);
+  }
+  .album-divider span { color: #FFD700; font-size: 1rem; }
+
+  /* ---- 2-column grid ---- */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ---- Card ---- */
+  .card {
+    background: #161b22;
+    border-radius: 10px;
+    border-left: 4px solid var(--accent);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.05);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.08);
+  }
+
+  /* Card header row */
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px 4px;
+    gap: 8px;
+  }
+  .card-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .rank-num {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .medal { font-size: 0.9rem; }
+  .person-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #f9fafb;
+    line-height: 1;
+  }
+  .card-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .pts-total {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #f9fafb;
+  }
+  .pts-total small {
+    font-size: 0.6rem;
+    color: #6b7280;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    margin-left: 1px;
+  }
+  .gd-val {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .gd-pos { background: #14532d; color: #4ade80; }
+  .gd-neg { background: #7f1d1d; color: #f87171; }
+
+  /* Title line */
+  .card-title {
+    font-size: 0.7rem;
+    font-style: italic;
+    color: #6b7280;
+    padding: 0 14px 8px;
+    line-height: 1.3;
+  }
+
+  /* Teams body */
+  .card-body {
+    padding: 2px 14px 8px;
+    border-top: 1px solid rgba(255,255,255,.05);
+  }
+  .team-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    font-size: 0.78rem;
+  }
+  .team-row:last-child { border-bottom: none; }
+  .team-flag { font-size: 1rem; flex-shrink: 0; }
+  .team-name {
+    font-weight: 600;
+    color: #e5e7eb;
+    width: 110px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .result-badge {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .result-badge.win  { background: #166534; color: #4ade80; }
+  .result-badge.draw { background: #713f12; color: #fbbf24; }
+  .result-badge.loss { background: #7f1d1d; color: #f87171; }
+  .result-detail {
+    color: #9ca3af;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.74rem;
+  }
+  .grp-badge {
+    font-size: 0.6rem;
+    color: #4b5563;
+    flex-shrink: 0;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .team-pts {
+    font-size: 0.65rem;
+    color: #4b5563;
+    flex-shrink: 0;
+    width: 22px;
+    text-align: right;
+  }
+
+  /* Footer */
+  .card-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 14px 9px;
+    background: #0f1117;
+    border-top: 1px solid rgba(255,255,255,.05);
+    flex-wrap: wrap;
+  }
+  .rec-item {
+    font-size: 0.7rem;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .win-dot  { color: #4ade80; font-weight: 700; }
+  .draw-dot { color: #fbbf24; font-weight: 700; }
+  .loss-dot { color: #f87171; font-weight: 700; }
+  .scorer-row {
+    font-size: 0.7rem;
+    color: #6b7280;
+    margin-left: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60%;
+  }
+
+  /* Look-ahead block */
+  .lookahead {
+    padding: 8px 14px 10px;
+    background: #0c1520;
+    border-top: 1px solid rgba(255,255,255,.07);
+  }
+  .la-header {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+    opacity: .85;
+  }
+  .la-fixture {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #e5e7eb;
+    line-height: 1.2;
+  }
+  .la-meta {
+    font-size: 0.62rem;
+    color: #4b5563;
+    margin: 3px 0 5px;
+  }
+  .la-blurb {
+    font-size: 0.7rem;
+    color: #9ca3af;
+    line-height: 1.45;
+    font-style: italic;
+  }
+
+  /* ---- Overview: league table + talking points ---- */
+  .overview {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto 36px;
+    align-items: start;
+  }
+  .lt-wrap {
+    flex-shrink: 0;
+  }
+  .lt {
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    width: 100%;
+    background: #161b22;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.05);
+  }
+  .lt thead tr {
+    background: #0f1117;
+  }
+  .lt th {
+    padding: 7px 10px;
+    text-align: left;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4b5563;
+  }
+  .lt th:not(:nth-child(2)) { text-align: center; }
+  .lt td {
+    padding: 6px 10px;
+    border-top: 1px solid rgba(255,255,255,.04);
+    color: #d1d5db;
+    text-align: center;
+  }
+  .lt-rank { color: #6b7280; font-size: 0.7rem; text-align: center !important; }
+  .lt-name { text-align: left !important; font-weight: 600; color: #f9fafb; white-space: nowrap; }
+  .lt-pts { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 0.9rem; color: #f9fafb; }
+  .lt tbody tr:hover { background: rgba(255,255,255,.03); }
+  .gd-pill {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 1px 5px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+  .gd-pill.gd-pos { background: #14532d; color: #4ade80; }
+  .gd-pill.gd-neg { background: #7f1d1d; color: #f87171; }
+
+  .summary-wrap {
+    background: #161b22;
+    border-radius: 8px;
+    padding: 14px 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.05);
+  }
+  .summary-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #4b5563;
+    margin-bottom: 10px;
+  }
+  .talking-points {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .talking-points li {
+    font-size: 0.78rem;
+    color: #9ca3af;
+    line-height: 1.5;
+    padding-left: 14px;
+    position: relative;
+  }
+  .talking-points li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: #FFD700;
+    font-weight: 700;
+  }
+
+  @media (max-width: 700px) {
+    .card-grid { grid-template-columns: 1fr; }
+    .team-name { width: 90px; }
+    .overview { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="album-header">
+  <div class="album-title">🏆 World Cup 2026 Sweepstake</div>
+  <div class="album-divider"><span>★</span></div>
+  <div class="album-subtitle">Matchday 2 · Group Stage</div>
+</header>
+
+
+<div class="overview">
+  <div class="lt-wrap">
+    <table class="lt">
+      <thead>
+        <tr>
+          <th>#</th><th>Name</th><th>W</th><th>D</th><th>L</th><th>Pts</th><th>GD</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="lt-rank">1</td>
+        <td class="lt-name">Mike</td>
+        <td class="lt-w">6</td>
+        <td class="lt-d">2</td>
+        <td class="lt-l">0</td>
+        <td class="lt-pts">20</td>
+        <td class="lt-gd"><span class="gd-pill gd-pos">+18</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">2</td>
+        <td class="lt-name">Martha</td>
+        <td class="lt-w">5</td>
+        <td class="lt-d">3</td>
+        <td class="lt-l">0</td>
+        <td class="lt-pts">18</td>
+        <td class="lt-gd"><span class="gd-pill gd-pos">+15</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">3</td>
+        <td class="lt-name">Tony</td>
+        <td class="lt-w">4</td>
+        <td class="lt-d">4</td>
+        <td class="lt-l">0</td>
+        <td class="lt-pts">16</td>
+        <td class="lt-gd"><span class="gd-pill gd-pos">+11</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">4</td>
+        <td class="lt-name">Jane</td>
+        <td class="lt-w">4</td>
+        <td class="lt-d">2</td>
+        <td class="lt-l">2</td>
+        <td class="lt-pts">14</td>
+        <td class="lt-gd"><span class="gd-pill gd-pos">+4</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">5</td>
+        <td class="lt-name">Ben</td>
+        <td class="lt-w">3</td>
+        <td class="lt-d">3</td>
+        <td class="lt-l">2</td>
+        <td class="lt-pts">12</td>
+        <td class="lt-gd"><span class="gd-pill gd-pos">+6</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">6</td>
+        <td class="lt-name">Anna</td>
+        <td class="lt-w">3</td>
+        <td class="lt-d">2</td>
+        <td class="lt-l">3</td>
+        <td class="lt-pts">11</td>
+        <td class="lt-gd"><span class="gd-pill gd-neg">-3</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">7</td>
+        <td class="lt-name">John</td>
+        <td class="lt-w">3</td>
+        <td class="lt-d">1</td>
+        <td class="lt-l">4</td>
+        <td class="lt-pts">10</td>
+        <td class="lt-gd"><span class="gd-pill gd-neg">-5</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">8</td>
+        <td class="lt-name">Amanda</td>
+        <td class="lt-w">2</td>
+        <td class="lt-d">2</td>
+        <td class="lt-l">4</td>
+        <td class="lt-pts">8</td>
+        <td class="lt-gd"><span class="gd-pill gd-neg">-6</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">9</td>
+        <td class="lt-name">Danny</td>
+        <td class="lt-w">1</td>
+        <td class="lt-d">4</td>
+        <td class="lt-l">3</td>
+        <td class="lt-pts">7</td>
+        <td class="lt-gd"><span class="gd-pill gd-neg">-10</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">10</td>
+        <td class="lt-name">Helen</td>
+        <td class="lt-w">2</td>
+        <td class="lt-d">0</td>
+        <td class="lt-l">6</td>
+        <td class="lt-pts">6</td>
+        <td class="lt-gd"><span class="gd-pill gd-neg">-8</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">11</td>
+        <td class="lt-name">Lloyd</td>
+        <td class="lt-w">1</td>
+        <td class="lt-d">2</td>
+        <td class="lt-l">5</td>
+        <td class="lt-pts">5</td>
+        <td class="lt-gd"><span class="gd-pill gd-neg">-8</span></td>
+      </tr>
+      <tr>
+        <td class="lt-rank">12</td>
+        <td class="lt-name">Silver</td>
+        <td class="lt-w">0</td>
+        <td class="lt-d">3</td>
+        <td class="lt-l">5</td>
+        <td class="lt-pts">3</td>
+        <td class="lt-gd"><span class="gd-pill gd-neg">-14</span></td>
+      </tr></tbody>
+    </table>
+  </div>
+  <div class="summary-wrap">
+    <div class="summary-label">Week in review</div>
+    <ul class="talking-points"><li>Mike is DOMINANT — 20 pts, +18 GD, ZERO defeats across all 4 teams. Argentina, Canada, Japan and Mexico are ALL perfect or near-perfect. Messi (5 goals) and David (4 goals) are both in the Golden Boot race!</li><li>Martha unbeaten too — 18 pts, +15 GD. France, USA and Portugal all won both games. Only Belgium (2 draws) is letting her down. Mbappé (4) and Ronaldo (3) give her TWO top scorers.</li><li>Tony the quiet achiever — 16 pts, STILL UNBEATEN (4W 4D). Germany are perfect, Brazil and Morocco both won on MD2, and Iran ground out another 0-0. Best GD per point ratio in the group!</li><li>Ben surges up — Spain&#x27;s 4-0 demolition of Saudi Arabia (Oyarzabal brace + Yamal + OG) and Haaland&#x27;s brace vs Senegal catapulted him from 8th to 5th.</li><li>John&#x27;s rollercoaster — Sweden hammered 5-1 by Netherlands after their own 5-1 win on MD1! Côte d&#x27;Ivoire lost to Germany. Only Croatia&#x27;s win vs Panama saved the day.</li><li>Amanda in freefall — Qatar&#x27;s 6-0 humiliation by Canada was catastrophic. England drew 0-0 with Ghana (frustrating). Panama lost again. Only Australia&#x27;s MD1 win keeps her afloat.</li><li>Silver&#x27;s misery deepens — Still winless! Tunisia conceded 9 goals in 2 games. Haiti conceded 4 without scoring. Uruguay can&#x27;t stop drawing. GD of -14 is by far the worst.</li><li>Note: USA&#x27;s 2-0 vs Australia included a Cameron Burgess own goal (11&#x27;). Spain&#x27;s 4th goal vs Saudi Arabia was a Hassan Tambakti own goal (49&#x27;). Portugal&#x27;s 4th goal vs Uzbekistan was an Abduvokhid Nematov own goal (60&#x27;).</li></ul>
+  </div>
+</div>
+
+<div class="card-grid">
+
+  <div class="card" style="--accent:#C9A227;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#1</span><span class="medal">🥇</span>
+        <div class="person-name">MIKE</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">20<small>pts</small></span>
+        <span class="gd-val gd-pos">GD +18</span>
+      </div>
+    </div>
+    <div class="card-title">"The Messi Machine"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🇲🇽</span>
+          <span class="team-name">Mexico</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">6pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇦🇷</span>
+          <span class="team-name">Argentina</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">6pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇯🇵</span>
+          <span class="team-name">Japan</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">4pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇨🇦</span>
+          <span class="team-name">Canada</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">4pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>6</span>
+      <span class="rec-item"><span class="draw-dot">D</span>2</span>
+      <span class="rec-item"><span class="loss-dot">L</span>0</span>
+      <span class="scorer-row">⚽ Lionel Messi (Argentina) — 5 goals; Jonathan David (Canada) — 4 goals</span>
+    </div>
+    
+  </div>
+
+  <div class="card" style="--accent:#888;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#2</span><span class="medal">🥈</span>
+        <div class="person-name">MARTHA</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">18<small>pts</small></span>
+        <span class="gd-val gd-pos">GD +15</span>
+      </div>
+    </div>
+    <div class="card-title">"The Superpower Sweep"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🇺🇸</span>
+          <span class="team-name">United States</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">6pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇫🇷</span>
+          <span class="team-name">France</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">6pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇵🇹</span>
+          <span class="team-name">Portugal</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">4pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇧🇪</span>
+          <span class="team-name">Belgium</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">2pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>5</span>
+      <span class="rec-item"><span class="draw-dot">D</span>3</span>
+      <span class="rec-item"><span class="loss-dot">L</span>0</span>
+      <span class="scorer-row">⚽ Kylian Mbappé (France) — 4 goals; Cristiano Ronaldo (Portugal) — 3 goals</span>
+    </div>
+    
+  </div>
+
+  <div class="card" style="--accent:#7B3F00;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#3</span><span class="medal">🥉</span>
+        <div class="person-name">TONY</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">16<small>pts</small></span>
+        <span class="gd-val gd-pos">GD +11</span>
+      </div>
+    </div>
+    <div class="card-title">"The Unbeaten Heavyweights"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🇩🇪</span>
+          <span class="team-name">Germany</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">6pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇧🇷</span>
+          <span class="team-name">Brazil</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">4pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇲🇦</span>
+          <span class="team-name">Morocco</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">4pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇮🇷</span>
+          <span class="team-name">Iran</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">2pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>4</span>
+      <span class="rec-item"><span class="draw-dot">D</span>4</span>
+      <span class="rec-item"><span class="loss-dot">L</span>0</span>
+      <span class="scorer-row">⚽ Deniz Undav (Germany) — 3 goals; Kai Havertz (Germany) — 2 goals; Matheus Cunha (Brazil) — 2 goals</span>
+    </div>
+    
+  </div>
+
+  <div class="card" style="--accent:#1e3a8a;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#4</span>
+        <div class="person-name">JANE</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">14<small>pts</small></span>
+        <span class="gd-val gd-pos">GD +4</span>
+      </div>
+    </div>
+    <div class="card-title">"The Oranje Armada"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🇨🇴</span>
+          <span class="team-name">Colombia</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">6pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇳🇱</span>
+          <span class="team-name">Netherlands</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">4pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇰🇷</span>
+          <span class="team-name">Korea Republic</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇧🇦</span>
+          <span class="team-name">Bosnia</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">1pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>4</span>
+      <span class="rec-item"><span class="draw-dot">D</span>2</span>
+      <span class="rec-item"><span class="loss-dot">L</span>2</span>
+      <span class="scorer-row">⚽ Cody Gakpo (Netherlands) — 3 goals; Brian Brobbey (Netherlands) — 2 goals</span>
+    </div>
+    
+  </div>
+
+  <div class="card" style="--accent:#1e3a8a;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#5</span>
+        <div class="person-name">BEN</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">12<small>pts</small></span>
+        <span class="gd-val gd-pos">GD +6</span>
+      </div>
+    </div>
+    <div class="card-title">"The Haaland Express"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🇪🇸</span>
+          <span class="team-name">Spain</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">4pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇳🇴</span>
+          <span class="team-name">Norway</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">6pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇨🇿</span>
+          <span class="team-name">Czech Republic</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇪🇨</span>
+          <span class="team-name">Ecuador</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">1pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>3</span>
+      <span class="rec-item"><span class="draw-dot">D</span>3</span>
+      <span class="rec-item"><span class="loss-dot">L</span>2</span>
+      <span class="scorer-row">⚽ Erling Haaland (Norway) — 4 goals; Mikel Oyarzabal (Spain) — 2 goals</span>
+    </div>
+    
+  </div>
+
+  <div class="card" style="--accent:#1e3a8a;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#6</span>
+        <div class="person-name">ANNA</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">11<small>pts</small></span>
+        <span class="gd-val gd-neg">GD -3</span>
+      </div>
+    </div>
+    <div class="card-title">"The Comeback Kids"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🇩🇿</span>
+          <span class="team-name">Algeria</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇬🇭</span>
+          <span class="team-name">Ghana</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">4pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>
+          <span class="team-name">Scotland</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇳🇿</span>
+          <span class="team-name">New Zealand</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">1pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>3</span>
+      <span class="rec-item"><span class="draw-dot">D</span>2</span>
+      <span class="rec-item"><span class="loss-dot">L</span>3</span>
+      <span class="scorer-row">⚽ Elijah Just (New Zealand) — 2 goals; Amine Gouiri (Algeria) — 1 goal; Nadhir Benbouali (Algeria) — 1 goal</span>
+    </div>
+    
+  </div>
+
+  <div class="card" style="--accent:#065f46;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#7</span>
+        <div class="person-name">JOHN</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">10<small>pts</small></span>
+        <span class="gd-val gd-neg">GD -5</span>
+      </div>
+    </div>
+    <div class="card-title">"The Battered Shield"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🇸🇪</span>
+          <span class="team-name">Sweden</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇨🇮</span>
+          <span class="team-name">Côte d&#x27;Ivoire</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇭🇷</span>
+          <span class="team-name">Croatia</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇸🇦</span>
+          <span class="team-name">Saudi Arabia</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">1pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>3</span>
+      <span class="rec-item"><span class="draw-dot">D</span>1</span>
+      <span class="rec-item"><span class="loss-dot">L</span>4</span>
+      <span class="scorer-row">⚽ Yasin Ayari (Sweden) — 2 goals; Brian Brobbey (Netherlands, not John&#x27;s) scored against Sweden</span>
+    </div>
+    
+  </div>
+
+  <div class="card" style="--accent:#6d28d9;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#8</span>
+        <div class="person-name">AMANDA</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">8<small>pts</small></span>
+        <span class="gd-val gd-neg">GD -6</span>
+      </div>
+    </div>
+    <div class="card-title">"The Stalling Lions"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+          <span class="team-name">England</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">4pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇦🇺</span>
+          <span class="team-name">Australia</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇶🇦</span>
+          <span class="team-name">Qatar</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇵🇦</span>
+          <span class="team-name">Panama</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">0pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>2</span>
+      <span class="rec-item"><span class="draw-dot">D</span>2</span>
+      <span class="rec-item"><span class="loss-dot">L</span>4</span>
+      <span class="scorer-row">⚽ Harry Kane (England) — 2 goals</span>
+    </div>
+    
+  </div>
+
+  <div class="card" style="--accent:#92400e;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#9</span>
+        <div class="person-name">DANNY</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">7<small>pts</small></span>
+        <span class="gd-val gd-neg">GD -10</span>
+      </div>
+    </div>
+    <div class="card-title">"The Whipping Boys"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🇪🇬</span>
+          <span class="team-name">Egypt</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">4pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇨🇻</span>
+          <span class="team-name">Cape Verde</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">2pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇨🇼</span>
+          <span class="team-name">Curacao</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇮🇶</span>
+          <span class="team-name">Iraq</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">0pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>1</span>
+      <span class="rec-item"><span class="draw-dot">D</span>4</span>
+      <span class="rec-item"><span class="loss-dot">L</span>3</span>
+      <span class="scorer-row">⚽ Mohamed Salah (Egypt) — 2 goals; Kevin Lenini &amp; Hélio Varela (Cape Verde) — 1 each</span>
+    </div>
+    
+  </div>
+
+  <div class="card" style="--accent:#7f1d1d;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#10</span>
+        <div class="person-name">HELEN</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">6<small>pts</small></span>
+        <span class="gd-val gd-neg">GD -8</span>
+      </div>
+    </div>
+    <div class="card-title">"The Galarza Glimmer"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🇵🇾</span>
+          <span class="team-name">Paraguay</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇦🇹</span>
+          <span class="team-name">Austria</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">3pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇸🇳</span>
+          <span class="team-name">Senegal</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">0pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇹🇷</span>
+          <span class="team-name">Türkiye</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">0pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>2</span>
+      <span class="rec-item"><span class="draw-dot">D</span>0</span>
+      <span class="rec-item"><span class="loss-dot">L</span>6</span>
+      <span class="scorer-row">⚽ Ismaïla Sarr (Senegal) — 3 goals; Marko Arnautovic (Austria) — 1 goal</span>
+    </div>
+    
+  </div>
+
+  <div class="card" style="--accent:#4c0519;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#11</span>
+        <div class="person-name">LLOYD</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">5<small>pts</small></span>
+        <span class="gd-val gd-neg">GD -8</span>
+      </div>
+    </div>
+    <div class="card-title">"The Sinking Ship"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🇨🇭</span>
+          <span class="team-name">Switzerland</span>
+          <span class="result-badge win">W</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">4pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇨🇩</span>
+          <span class="team-name">Congo DR</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇯🇴</span>
+          <span class="team-name">Jordan</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">0pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇺🇿</span>
+          <span class="team-name">Uzbekistan</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">0pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>1</span>
+      <span class="rec-item"><span class="draw-dot">D</span>2</span>
+      <span class="rec-item"><span class="loss-dot">L</span>5</span>
+      <span class="scorer-row">⚽ Johan Manzambi (Switzerland) — 2 goals; Wissa (Congo DR) — 1 goal</span>
+    </div>
+    
+  </div>
+
+  <div class="card" style="--accent:#111;">
+    <div class="card-header">
+      <div class="card-left">
+        <span class="rank-num">#12</span>
+        <div class="person-name">SILVER</div>
+      </div>
+      <div class="card-right">
+        <span class="pts-total">3<small>pts</small></span>
+        <span class="gd-val gd-neg">GD -14</span>
+      </div>
+    </div>
+    <div class="card-title">"The Draw Specialists"</div>
+    <div class="card-body">
+      
+        <div class="team-row">
+          <span class="team-flag">🇺🇾</span>
+          <span class="team-name">Uruguay</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">2pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇿🇦</span>
+          <span class="team-name">South Africa</span>
+          <span class="result-badge draw">D</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">1pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇭🇹</span>
+          <span class="team-name">Haiti</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">0pt</span>
+        </div>
+        <div class="team-row">
+          <span class="team-flag">🇹🇳</span>
+          <span class="team-name">Tunisia</span>
+          <span class="result-badge loss">L</span>
+          <span class="grp-badge">Grp </span>
+          <span class="team-pts">0pt</span>
+        </div>
+    </div>
+    <div class="card-footer">
+      <span class="rec-item"><span class="win-dot">W</span>0</span>
+      <span class="rec-item"><span class="draw-dot">D</span>3</span>
+      <span class="rec-item"><span class="loss-dot">L</span>5</span>
+      <span class="scorer-row">⚽ Maxi Araújo (Uruguay) — 2 goals; Teboho Mokoena (South Africa) — 1 goal (pen)</span>
+    </div>
+    
+  </div>
+</div>
+
+</body>
+</html>
